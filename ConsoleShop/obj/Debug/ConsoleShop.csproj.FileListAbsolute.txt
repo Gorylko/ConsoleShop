@@ -1,0 +1,7 @@
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\bin\Debug\ConsoleShop.exe.config
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\bin\Debug\ConsoleShop.exe
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\bin\Debug\ConsoleShop.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\obj\Debug\ConsoleShop.csprojAssemblyReference.cache
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\obj\Debug\ConsoleShop.csproj.CoreCompileInputs.cache
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\obj\Debug\ConsoleShop.exe
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\ConsoleShop\obj\Debug\ConsoleShop.pdb
