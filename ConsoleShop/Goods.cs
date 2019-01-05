@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ConsoleShop.PrintConstants;
 
 namespace ConsoleShop
 {
@@ -13,17 +14,14 @@ namespace ConsoleShop
         public int Price { get; private set; }
         public Goods(string name, string manuf, int price)
         {
-            Name = name;
-            Manufacturer = manuf;
-            Price = price;
+            this.Name = name;
+            this.Manufacturer = manuf;
+            this.Price = price;
         }
 
-        public void PrintInfo()
+        public string PrintInfo()
         {
-            Console.WriteLine("\n Название : {0}",Name);
-            Console.WriteLine(" Производитель : {0}",Manufacturer);
-            Console.WriteLine(" Цена : {0}",Price);
-            Console.ResetColor();
+            return NewLine + "Название : " + this.Name + NewLine + "Производитель : " + this.Manufacturer + NewLine + "Цена : " + this.Price+ NewLine; ;
         }
 
 
