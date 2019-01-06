@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop
 {
-    class PrintConstants
+    class Constants
     {
         public const string NewLine = "\n";
 
@@ -17,5 +17,12 @@ namespace ConsoleShop
         public const string TabX2 = "\t\t";
 
         public const ConsoleColor GreenColor = ConsoleColor.Green;
+
+        public const ConsoleColor RedColor = ConsoleColor.Red;
+
+        public const ConsoleColor YellowColor = ConsoleColor.Yellow;
+
+        public const ConsoleColor DefaultColor = ConsoleColor.White;
+
     }
 }

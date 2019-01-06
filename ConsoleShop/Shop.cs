@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using static ConsoleShop.PrintConstants;
+using static ConsoleShop.Constants;
 
 namespace ConsoleShop
 {
@@ -72,21 +72,21 @@ namespace ConsoleShop
         public void PrintGoods(List<Goods> a)
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = GreenColor;
             Console.WriteLine("\t\tВсего товаров : {0}", a.Count);
-            Console.ResetColor();
+            Console.ForegroundColor = DefaultColor;
             foreach (Goods el in a)
             {
                 if (el.Price > Balance)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = RedColor;
                 }
                 Console.Write(el.PrintInfo());
                 Console.ResetColor();
             }
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = GreenColor;
             Console.Write("\t\tБаланс : {0} Бульболларов", Balance);
-            Console.ResetColor();
+            Console.ForegroundColor = DefaultColor;
         }
 
 

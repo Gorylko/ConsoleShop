@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ConsoleShop.Constants;
 
 namespace ConsoleShop
 {
@@ -10,6 +11,7 @@ namespace ConsoleShop
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = DefaultColor;
             Console.SetWindowSize(60, 30);
             Console.SetBufferSize(60, 30);
             Shop user1 = new Shop(37);
