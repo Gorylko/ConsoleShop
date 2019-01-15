@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using static ConsoleShop.Constants;
+using System.Data.SqlClient;
 
 namespace ConsoleShop
 {
@@ -41,11 +42,11 @@ namespace ConsoleShop
             {
                 Console.Clear();
                 Console.ForegroundColor = GreenColor;
-                Console.WriteLine(" Выберите раздел(/название раздела)");
-                Console.WriteLine(" Еда (/eat)");
-                Console.WriteLine(" Дом и быт(/forhouse)");
-                Console.WriteLine(" одежда(/dress)");
-                Console.WriteLine(" Выход из магазина(/exit)");
+                Console.WriteLine(Tab + "Выберите раздел(/название раздела)");
+                Console.WriteLine(Tab + "Еда (/eat)");
+                Console.WriteLine(Tab + "Дом и быт(/forhouse)");
+                Console.WriteLine(Tab + "Одежда(/dress)");
+                Console.WriteLine(Tab + "Выход из магазина(/exit)" +NewLineX2 + NewLineX2 + "============================================================");
                 switch (Console.ReadLine())
                 {
                     case "/eat":
@@ -73,7 +74,7 @@ namespace ConsoleShop
         {
             Console.Clear();
             Console.ForegroundColor = GreenColor;
-            Console.WriteLine("\t\tВсего товаров : {0}", a.Count);
+            Console.WriteLine(TabX2 + "Всего товаров : {0}", a.Count);
             Console.ForegroundColor = DefaultColor;
             foreach (Goods el in a)
             {
@@ -85,7 +86,7 @@ namespace ConsoleShop
                 Console.ResetColor();
             }
             Console.ForegroundColor = GreenColor;
-            Console.Write("\t\tБаланс : {0} Бульболларов", Balance);
+            Console.Write(TabX2 + "Баланс : {0} Бульболларов", Balance);
             Console.ForegroundColor = DefaultColor;
         }
 
@@ -96,18 +97,37 @@ namespace ConsoleShop
 
         public static void FillUpTheGoods()
         {
-            Goods h001 = new Goods("Zeva", "PaperIndustry", 18);
-            _forHouse.Add(h001);
-
-            Goods e001 = new Goods("Coca-Salo", "BelUkra", 45);
-            Goods e002 = new Goods("Kit-Cat", "Mogilev meat processing plant", 116);
-            Goods e003 = new Goods("BonChakra", "Yoga Products Industry", 36);
-            _eat.Add(e001);
-            _eat.Add(e002);
-            _eat.Add(e003);
-
-            Goods d001 = new Goods("Underpants", "Supreme", 999999);
-            _dress.Add(d001);
+            string connectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True";
+            string commandString = "SELECT * FROM Goods";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(commandString, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        switch(reader.GetValue(3))
+                        {
+                            case "Dress":
+                                _dress.Add(new Goods((int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (int)reader.GetValue(4)));
+                                break;
+                            case "Eat":
+                                _eat.Add(new Goods((int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (int)reader.GetValue(4)));
+                                break;
+                            case "ForHouse":
+                                _forHouse.Add(new Goods((int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (int)reader.GetValue(4)));
+                                break;
+                            default:
+                                Console.WriteLine("Ошибка в базе данных, столбец \"категория\"");
+                                Thread.Sleep(1000);
+                                Environment.Exit(0);
+                                break;
+                        }
+                    }
+                }
+            }
         }
 
     }
