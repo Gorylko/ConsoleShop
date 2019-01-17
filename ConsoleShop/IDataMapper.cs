@@ -8,6 +8,6 @@ namespace ConsoleShop
 {
     public interface IDataMapper<IDataReader, T>
     {
-        T GetMappedObject<IDataReader, T>();
+        T GetMappedObject();
     }
 }

@@ -4,20 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using static ConsoleShop.Constants;
 
 namespace ConsoleShop
 {
     class DbContext
     {
-        public void ExecuteSqlQuery(string query, IDataMapper<Goods> datamapper)
+        public int GetRowsCount()
         {
-            string connectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True";
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                int count = 0;
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM Goods", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if(reader.HasRows)
+                {
+                    while(reader.Read()) //Кастыль 
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+        }
+        public void ExecuteSqlQuery(string query, IDataMapper<SqlDataReader, Goods> datamapper) //пока не знаю как это использовать
+        {
+            using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 var command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
             }
+            //return datamapper.GetMappedObject();
+        }
+        public Goods ExecuteSqlQuery(string query)
+        {
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                var command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                var datamapper = new GoodsDataMapper();
+                return datamapper.GetMappedObject();
+            }
+
         }
     }
 }

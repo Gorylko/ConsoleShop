@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using static ConsoleShop.Constants;
 
 namespace ConsoleShop
 {
@@ -12,9 +13,8 @@ namespace ConsoleShop
 
         public Goods GetMappedObject()
         {
-            string connectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True";
             string commandString = "SELECT * FROM Goods";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(commandString, connection);

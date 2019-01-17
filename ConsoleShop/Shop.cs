@@ -19,7 +19,7 @@ namespace ConsoleShop
         public User Consumer { get; private set; }
 
 
-        public void OpenMenu()
+        public void OpenMenu() // Пока не пашет
         {
             while (true)
             {
@@ -81,20 +81,11 @@ namespace ConsoleShop
 
         public void FillUpTheGoods()
         {
-            string connectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True";
-            string commandString = "SELECT * FROM Goods";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            var dbcont = new DbContext();
+
+            for (int i = 1; i <= dbcont.GetRowsCount(); i++)
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(commandString, connection);
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    //while (reader.Read())
-                    //{
-                    //    GoodsList.Add(new Goods((int)reader.GetValue(0), (string)reader.GetValue(1), (string)reader.GetValue(2), (string)reader.GetValue(3), (int)reader.GetValue(4)));
-                    //}
-                }
+                _goodsList.Add(dbcont.ExecuteSqlQuery(string.Format("Select * From Goods Where Id = {0}", i)));
             }
         }
 

@@ -8,6 +8,8 @@ namespace ConsoleShop
 {
     class Constants
     {
+        public const string ConnectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True";
+
         public const string NewLine = "\n";
 
         public const string NewLineX2 = "\n\n";
