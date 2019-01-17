@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop
 {
-    public interface IDataMapper<T>
+    public interface IDataMapper<IDataReader, T>
     {
         T GetMappedObject<IDataReader, T>();
     }
