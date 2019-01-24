@@ -10,6 +10,10 @@ namespace ConsoleShopLibrary.Constants
     {
         public const string ConnectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True"; //Change as necessary
 
+        public const int MinLoginSize = 5;
+
+        public const int MinPasswordSize = 5;
+
         public const string NewLine = "\n";
 
         public const string NewLineX2 = "\n\n";

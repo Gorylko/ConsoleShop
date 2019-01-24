@@ -8,5 +8,6 @@ namespace ConsoleShop.Shop
 {
     public class Shop
     {
+
     }
 }
