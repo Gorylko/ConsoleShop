@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ConsoleShop.Constants;
+using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop
 {

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop
+namespace ConsoleShopLibrary.Constants
 {
-    class Constants
+    public static class AllConst
     {
-        public const string ConnectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True";
+        public const string ConnectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True"; //Change as necessary
 
         public const string NewLine = "\n";
 
@@ -25,6 +25,5 @@ namespace ConsoleShop
         public const ConsoleColor YellowColor = ConsoleColor.Yellow;
 
         public const ConsoleColor DefaultColor = ConsoleColor.White;
-
     }
 }
