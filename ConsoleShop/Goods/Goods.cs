@@ -7,7 +7,7 @@ using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop
 {
-    class Goods
+    public class Goods
     {
         public Goods(int id, string name, string manuf, string category, int price)
         {
