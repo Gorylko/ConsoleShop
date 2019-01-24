@@ -30,9 +30,13 @@ namespace ConsoleShop.Products
         public string Condition { get; private set; }
 
 
-        public string PrintInfo()
+        public string GetInfo()
         {
-            return NewLine + "Название : " + this.Name + NewLine + "Производитель : " + this.Manufacturer + NewLine + "Цена : " + this.Price+ NewLine; ;
+            return NewLine + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
+                "Дата изготовления :" + this.DateOfCreation + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
+                "Категория : " + Category + NewLineX2 + "Контакты производителя : " + this.Author.Name + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
+                "Почта : " + this.Author.Email + NewLineX2 + "Местоположение товара : " + this.LocationOfGoods + NewLine + "Состояние : " + this.Condition + NewLineX2;
+
         }
 
 

@@ -8,5 +8,6 @@
         Perfumery,
         Clothing,
         SportsEquipment‎,
+        ForPets
     }
 }
