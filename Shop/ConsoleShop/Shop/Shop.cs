@@ -10,8 +10,13 @@ namespace ConsoleShop.Shop
 {
     public class Shop
     {
+        public Shop(User user)
+        {
+            this.MainUser = user;
+        }
+
         private List<Goods> _stock { get; set; }
-        private User _user;
+        public User MainUser { get; private set; }
            
     }
 }

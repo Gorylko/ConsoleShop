@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IDataMapper.cs" />
     <Compile Include="Products\AuthorOfGoods.cs" />
     <Compile Include="Products\Category.cs" />
     <Compile Include="Products\Goods.cs" />
@@ -61,8 +62,6 @@
       <Name>ConsoleShopLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
