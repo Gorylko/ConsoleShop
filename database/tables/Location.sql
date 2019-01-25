@@ -1,0 +1,8 @@
+USE[ConsoleShop];
+CREATE TABLE [dbo].[Location]
+(
+[Id] INT IDENTITY(1,1) NOT NULL,
+[NameOfLocation] NVARCHAR(40) NOT NULL,
+PRIMARY KEY CLUSTERED([Id]ASC)
+);
+GO
