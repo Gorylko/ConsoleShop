@@ -16,7 +16,7 @@ namespace ConsoleShop.Shop
             this.MainUser = user;
         }
 
-        private List<Goods> _stock { get; set; }
+        private List<Product> _stock { get; set; }
         public User MainUser { get; private set; }
         public void OpenAuthorizationMenu()
         {

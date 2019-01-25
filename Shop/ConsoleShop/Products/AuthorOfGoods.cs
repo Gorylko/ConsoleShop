@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop.Products
 {
-    public class AuthorOfGoods
+    public class AuthorOfProduct
     {
-        public AuthorOfGoods(int id, string name, string phonenumber, string email)
+        public AuthorOfProduct(int id, string name, string phonenumber, string email)
         {
             this.Id = id;
             this.Name = name;

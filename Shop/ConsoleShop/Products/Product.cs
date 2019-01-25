@@ -7,9 +7,9 @@ using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.Products
 {
-    public class Goods
+    public class Product
     {
-        public Goods(int id, string name, string manuf, string category, int price)
+        public Product(int id, string name, string manuf, string category, int price)
         {
             //this.Id = id;
             //this.Name = name;
@@ -25,7 +25,7 @@ namespace ConsoleShop.Products
         public string DateOfCreation { get; private set; } = Convert.ToString(DateTime.Today);
         public string LastModifiedDate { get; private set; }
         public CategoryType Category { get; private set; }
-        public AuthorOfGoods Author { get; private set; }
+        public AuthorOfProduct Author { get; private set; }
         public string LocationOfGoods { get; private set; }
         public string Condition { get; private set; }
 
