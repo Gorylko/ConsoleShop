@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleShop.Products;
 using ConsoleShop.Users;
+using ConsoleShopLibrary.Methods;
 
 namespace ConsoleShop.Shop
 {
@@ -17,6 +18,9 @@ namespace ConsoleShop.Shop
 
         private List<Goods> _stock { get; set; }
         public User MainUser { get; private set; }
-           
+        public void OpenAuthorizationMenu()
+        {
+            Console.Write(MainUser.GetStringMenu());
+        }
     }
 }
