@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static ConsoleShopLibrary.Constants.AllConst;
-using ConsoleShopLibrary.Methods;
 
 namespace ConsoleShop.Users
 {

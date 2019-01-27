@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleShop.Users;
+using ConsoleShop.MainForShop;
 using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop
@@ -12,12 +13,10 @@ namespace ConsoleShop
     {
         static void Main()
         {
-            //Console.ForegroundColor = DefaultColor;
-            //var AglyExspress = new Shop(user1);
-            //Console.CursorVisible = false;
-            //AglyExspress.FillUpTheGoods();
-            //AglyExspress.OpenMenu();
-            //Console.ReadKey();
+            Console.ForegroundColor = DefaultColor;
+            Console.CursorVisible = false;
+            var AglyExspress = new Shop();
+            AglyExspress.OpenAuthorizationMenu();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ConsoleShop.Products
         public int Price { get; private set; }
         public string DateOfCreation { get; private set; } = Convert.ToString(DateTime.Today);
         public string LastModifiedDate { get; private set; }
-        public CategoryType Category { get; private set; }
+        public string Category { get; private set; }
         public AuthorOfProduct Author { get; private set; }
         public string LocationOfGoods { get; private set; }
         public string Condition { get; private set; }
