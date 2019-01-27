@@ -1,7 +1,7 @@
 USE[ConsoleShop];
 CREATE TABLE [dbo].[ProductState]
 (
-	[Id]INT IDENTITY(1,1) NOT NULL,
+	[StateId]INT IDENTITY(1,1) NOT NULL,
 	[State]NVARCHAR(40) NOT NULL,
 	PRIMARY KEY CLUSTERED([Id]ASC)
 );
