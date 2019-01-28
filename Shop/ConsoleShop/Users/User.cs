@@ -9,6 +9,15 @@ namespace ConsoleShop.Users
 {
     public class User
     {
+        public User(string login, string password, string email, RoleType role) //пока не используется
+        {
+
+        }
+        public User()
+        {
+            Role = RoleType.Guest;
+        }
+
         private string _login;
         public string Login
         {

@@ -22,7 +22,7 @@ namespace ConsoleShop.Products
         public string Name { get; private set; }
         public string Description { get; private set; }
         public int Price { get; private set; }
-        public string DateOfCreation { get; private set; } = Convert.ToString(DateTime.Today);
+        public string DateOfCreation { get; private set; }
         public string LastModifiedDate { get; private set; }
         public string Category { get; private set; }
         public AuthorOfProduct Author { get; private set; }
@@ -30,13 +30,12 @@ namespace ConsoleShop.Products
         public string Condition { get; private set; }
 
 
-        public string GetInfo()
+        public string GetInfoAboutProduct()
         {
             return NewLine + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
                 "Дата изготовления :" + this.DateOfCreation + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
                 "Категория : " + Category + NewLineX2 + "Контакты производителя : " + this.Author.Name + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
                 "Почта : " + this.Author.Email + NewLineX2 + "Местоположение товара : " + this.LocationOfGoods + NewLine + "Состояние : " + this.Condition + NewLineX2;
-
         }
 
 

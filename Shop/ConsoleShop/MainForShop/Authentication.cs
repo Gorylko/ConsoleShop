@@ -20,23 +20,32 @@ namespace ConsoleShop.MainForShop
         //}
         public static string GetStringMenu<T>(this T user)
         {
-            return "Авторизация - пиши /a" + NewLine + "Нету аккаунта? - пиши /r" + NewLine;
+            return "Авторизация - пиши /a" + NewLine + "Нету аккаунта? - пиши /r" + NewLine + "Войти как гость /g" + NewLine + "Выйти - пиши /e" + NewLine;
         }
         public static void OpenAuthorizationMenu(this Shop shop)
         {
-            Console.Write(shop.GetStringMenu());
-            switch(Console.ReadLine().Replace(" ", string.Empty))
+            while (true)
             {
-                case "/a":
-                    
-                    break;
-                case "/r":
-                    break;
-                default:
-                    break;
+                Console.Clear();
+                Console.Write(shop.GetStringMenu());
+                switch (Console.ReadLine().Replace(" ", string.Empty))
+                {
+                    case "/a":
+
+                        break;
+                    case "/r":
+                        break;
+                    case "/g":
+                        LoginAsAGuest(shop);
+                        break;
+                    case "/e":
+                        return;
+                    default:
+                        break;
+                }
             }
         }
-        public static void OpenRegistrationMenu(this Shop shop)
+        public static void OpenRegistrationMenu(this Shop shop) //еще разрабатывается
         {
             while (true)
             {
@@ -51,8 +60,15 @@ namespace ConsoleShop.MainForShop
                 Console.WriteLine("Введите вашу почту ");
                 if (true)
                     break;
-                Console.WriteLine("Данная почта занята!")
+                Console.WriteLine("Данная почта занята!");
             }
+
+        }
+        public static void LoginAsAGuest(Shop shop)
+        {
+            User user = new User();
+            shop.MainUser = user;
+            shop.OpenMainMenu();
         }
     }
 }
