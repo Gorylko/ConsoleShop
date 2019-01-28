@@ -8,7 +8,9 @@ namespace ConsoleShopLibrary.Constants
 {
     public static class AllConst
     {
-        public const string ConnectionString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=MyProjects;Integrated Security=True"; //Change as necessary
+        public const string ConnectionToConsoleShopString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=ConsoleShop;Integrated Security=True";
+
+        public const string ConnectionToUsersString = "";
 
         public const int MinLoginSize = 5;
 
