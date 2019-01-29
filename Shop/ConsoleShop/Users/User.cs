@@ -72,6 +72,19 @@ namespace ConsoleShop.Users
             }
         }
 
+        private string _phonenumber;
+        public string PhoneNumber
+        {
+            get
+            {
+                return _phonenumber;
+            }
+            private set
+            {
+                _email = value;
+            }
+        }
+
         public RoleType Role { get; private set; }
 
 

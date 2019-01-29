@@ -5,69 +5,131 @@ using System.Text;
 using System.Threading.Tasks;
 using ConsoleShop.Products;
 using ConsoleShop.Users;
+using ConsoleShop.Data;
 using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.MainForShop
 {
     public class Shop
     {
+        #region Shop
         private List<Product> _catalog { get; set; }
         public User MainUser { get; set; }
-        public void OpenMainMenu()
+
+        public void OpenMainMenu() //1
         {
-            bool indicator = true;
-            while (indicator)
+            while (true)
             {
                 Console.Clear();
                 Console.Write(GetMainMenuString());
-                SelectMenu(Console.ReadLine().Replace(" ", string.Empty),ref indicator);
+                switch (Console.ReadLine().Replace(" ", string.Empty))
+                {
+                    case "1":
+                        OpenCategoryMenu();
+                        break;
+                    case "2":
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        break;
+                    case "6":
+                        break;
+                    case "/r":
+                        return;
+                    default:
+                        break;
+
+                }
             }
         }
-        private string GetMainMenuString()
+
+        private string GetMainMenuString()//2
         {
             string mainmenustring = "Напишите цифру нужного раздела:" + NewLine + "1.Воспользоваться навигацией" + NewLine + "2.Открыть поиск" + NewLine;
-            if ((int)MainUser.Role > 0)
-                mainmenustring += "3.Посмотреть список своих товаров" + NewLine + "4.Открыть свой профиль";
-            if ((int)MainUser.Role > 1)
-                mainmenustring += "5.(!!!)Редактировать товары";
-            if ((int)MainUser.Role > 2)
-                mainmenustring += "6.(!!!)Редактировать пользователей";
-            return mainmenustring + NewLine + "Чтобы вернуться назад - пиши /r" + NewLine;
-        }
-        private void SelectMenu(string key, ref bool indicator)
-        {
-            switch(key)
+            try
             {
-                case "1":
-                    OpenCategoryMenu();
-                    break;
-                case "2":
-                    break;
-                case "3":
-                    break;
-                case "4":
-                    break;
-                case "5":
-                    break;
-                case "6":
-                    break;
-                case "/e":
-                    indicator = false;
-                    break;
-                default:
-                    break;
-
+                if ((int)MainUser.Role > 0)
+                    mainmenustring += "3.Посмотреть список своих товаров" + NewLine + "4.Открыть свой профиль";
+                if ((int)MainUser.Role > 1)
+                    mainmenustring += "5.(!!!)Редактировать товары";
+                if ((int)MainUser.Role > 2)
+                    mainmenustring += "6.(!!!)Редактировать пользователей";
+                return mainmenustring + NewLine + "Чтобы вернуться назад - пиши /r" + NewLine;
+            }
+            catch(NullReferenceException)
+            {
+                return mainmenustring + NewLine + "Чтобы вернуться назад - пиши /r" + NewLine;
             }
         }
+
 
         private void OpenCategoryMenu() 
         {
-            GetCategoryString();
+            Console.Clear();
+            var data = new ProductData();
+            Console.WriteLine(data.GetAllCategories());
+            OpenASpecificCategory(Console.ReadLine().Replace(" ", string.Empty));
         }
-        private string GetCategoryString() //с помощью папочки Data читает все категории и выписывает их 
+        private void OpenASpecificCategory(string key)
         {
-            string categorystring = "";
-            return categorystring;
+
         }
+        #endregion
+
+        #region Authorization
+        public string GetAuthorizationMenuString()
+        {
+            return "Авторизация - пиши /a" + NewLine + "Нету аккаунта? - пиши /r" + NewLine + "Войти как гость /g" + NewLine + "Выйти - пиши /e" + NewLine;
+        }
+        public void OpenAuthorizationMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.Write(GetAuthorizationMenuString());
+                switch (Console.ReadLine().Replace(" ", string.Empty))
+                {
+                    case "/a":
+
+                        break;
+                    case "/r":
+                        break;
+                    case "/g":
+                        LoginAsAGuest();
+                        break;
+                    case "/e":
+                        return;
+                    default:
+                        break;
+                }
+            }
+        }
+        public void OpenRegistrationMenu() //еще разрабатывается
+        {
+            while (true)
+            {
+                Console.WriteLine("Введите логин ");
+                if (true)
+                    break;
+                Console.WriteLine("Данный логин занят!");
+            }
+            Console.WriteLine("Введите пароль ");
+            while (true)
+            {
+                Console.WriteLine("Введите вашу почту ");
+                if (true)
+                    break;
+                Console.WriteLine("Данная почта занята!");
+            }
+
+        }
+        public void LoginAsAGuest()
+        {
+            OpenMainMenu();
+        }
+        #endregion
     }
 }

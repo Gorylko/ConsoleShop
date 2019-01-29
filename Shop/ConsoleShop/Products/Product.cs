@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleShop.Users;
 using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.Products
@@ -25,7 +26,7 @@ namespace ConsoleShop.Products
         public string CreationDate { get; private set; }
         public string LastModifiedDate { get; private set; }
         public string Category { get; private set; }
-        public AuthorOfProduct Author { get; private set; }
+        public User Author { get; private set; }
         public string LocationOfProduct { get; private set; }
         public string Condition { get; private set; }
 
@@ -34,7 +35,7 @@ namespace ConsoleShop.Products
         {
             return NewLine + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
                 "Дата изготовления :" + this.CreationDate + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
-                "Категория : " + Category + NewLineX2 + "Контакты производителя : " + this.Author.Name + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
+                "Категория : " + Category + NewLineX2 + "Контакты производителя : " + this.Author.Login + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
                 "Почта : " + this.Author.Email + NewLineX2 + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.Condition + NewLineX2;
         }
 

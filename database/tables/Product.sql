@@ -2,6 +2,7 @@ USE [ConsoleShop];
 CREATE TABLE [dbo].[Product]
 (
 	[Id]INT IDENTITY(1,1) NOT NULL,
+	[UserId] INT NOT NULL,
 	[CategoryId]INT NOT NULL,
 	[LocationId]INT NOT NULL,
 	[StateId]INT NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE [dbo].[Product]
 	PRIMARY KEY CLUSTERED([Id]ASC),
 	FOREIGN KEY([CategoryId]) REFERENCES [dbo].[Category]([CategoryId]),
 	FOREIGN KEY([LocationId]) REFERENCES [dbo].[Location]([LocationId]),
-	FOREIGN KEY([StateId]) REFERENCES [dbo].[ProductState]([StateId])
+	FOREIGN KEY([StateId]) REFERENCES [dbo].[ProductState]([StateId]),
+	FOREIGN KEY([UserId]) REFERENCES [dbo].[User]([UserId])
 );
 GO
