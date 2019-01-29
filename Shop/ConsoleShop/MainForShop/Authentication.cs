@@ -18,7 +18,7 @@ namespace ConsoleShop.MainForShop
         //{
 
         //}
-        public static string GetStringMenu<T>(this T user)
+        public static string GetAuthorizationMenuString(this Shop user)
         {
             return "Авторизация - пиши /a" + NewLine + "Нету аккаунта? - пиши /r" + NewLine + "Войти как гость /g" + NewLine + "Выйти - пиши /e" + NewLine;
         }
@@ -27,7 +27,7 @@ namespace ConsoleShop.MainForShop
             while (true)
             {
                 Console.Clear();
-                Console.Write(shop.GetStringMenu());
+                Console.Write(shop.GetAuthorizationMenuString());
                 switch (Console.ReadLine().Replace(" ", string.Empty))
                 {
                     case "/a":
@@ -66,8 +66,6 @@ namespace ConsoleShop.MainForShop
         }
         public static void LoginAsAGuest(Shop shop)
         {
-            User user = new User();
-            shop.MainUser = user;
             shop.OpenMainMenu();
         }
     }
