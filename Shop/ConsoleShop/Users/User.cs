@@ -9,13 +9,19 @@ namespace ConsoleShop.Users
 {
     public class User
     {
-        public User(string login, string password, string email, RoleType role) //пока не используется
+        public User(string login, string password, string email, string phone, RoleType role)
         {
-
+            this.Login = login;
+            this.Password = password;
+            this.Email = email;
+            this.PhoneNumber = phone;
+            this.Role = role;
         }
-        public User()
+        public User(string login, string password, string email) //for Product
         {
-            Role = RoleType.Guest;
+            this.Login = login;
+            this.Password = password;
+            this.Email = email;
         }
 
         private string _login;

@@ -10,7 +10,7 @@ namespace ConsoleShop.Products
 {
     public class Product
     {
-        public Product(int id, string name, string description, int price, string creationdate, string modifieddate, string category, User author, string locationofproduct, string condition)
+        public Product(int id, string name, string description, int price, string creationdate, string modifieddate, string category, User author, string locationofproduct, string state)
         {
             Id = id;
             Name = name;
@@ -21,7 +21,7 @@ namespace ConsoleShop.Products
             Category = category;
             Author = author;
             LocationOfProduct = locationofproduct;
-            Condition = condition;
+            State = state;
         }
 
         public int Id { get; private set; }
@@ -33,7 +33,7 @@ namespace ConsoleShop.Products
         public string Category { get; private set; }
         public User Author { get; private set; }
         public string LocationOfProduct { get; private set; }
-        public string Condition { get; private set; }
+        public string State { get; private set; }
 
 
         public string GetInfoAboutProduct()
@@ -41,7 +41,7 @@ namespace ConsoleShop.Products
             return NewLine + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
                 "Дата изготовления :" + this.CreationDate + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
                 "Категория : " + Category + NewLineX2 + "Контакты производителя : " + this.Author.Login + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
-                "Почта : " + this.Author.Email + NewLineX2 + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.Condition + NewLineX2;
+                "Почта : " + this.Author.Email + NewLineX2 + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.State + NewLineX2;
         }
 
 

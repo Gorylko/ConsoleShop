@@ -47,6 +47,13 @@ namespace ConsoleShop.Data
                 SqlDataReader productreader = productcommand.ExecuteReader();
                 var categorycommand = new SqlCommand($"SELECT * FROM Category WHERE CategoryId = {categoryId}", connection);
                 SqlDataReader categoryreader = categorycommand.ExecuteReader();
+                var authorcommand = new SqlCommand($"SELECT * FROM User WHERE UserId = {productreader["UserId"]}");
+                SqlDataReader authorreader = authorcommand.ExecuteReader();
+                var locationcommand = new SqlCommand($"SELECT * FROM Location WHERE LocationId = {productreader["LocationId"]}");
+                SqlDataReader locationreader = authorcommand.ExecuteReader();
+                var statecommand = new SqlCommand($"SELECT * FROM ProductState WHERE StateId = {productreader["StateId"]}");
+                SqlDataReader statereader = authorcommand.ExecuteReader();
+
                 if (productreader.HasRows)
                 {
                     while(productreader.Read())
@@ -54,14 +61,17 @@ namespace ConsoleShop.Data
                         if((int)productreader["CategoryId"] == categoryId)
                         {
                             products.Add(new Product(
-                                productreader["Id"],
-                                productreader["Name"],
-                                productreader["Description"],
-                                productreader["Price"],
-                                productreader["CreationDate"],
-                                productreader["LastModifiedDate"],
-                                categoryreader[""]
-                                ))
+                                (int)productreader["Id"],
+                                (string)productreader["Name"],
+                                (string)productreader["Description"],
+                                (int)productreader["Price"],
+                                (string)productreader["CreationDate"],
+                                (string)productreader["LastModifiedDate"],
+                                (string)categoryreader["Name"],
+                                new Users.User((string)authorreader["Login"], (string)authorreader["Email"], (string)authorreader["PhoneNumber"]),
+                                (string)locationreader["Location"],
+                                (string)statereader["State"]
+                                ));
                         }
                     }
                 }
