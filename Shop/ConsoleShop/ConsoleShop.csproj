@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Data\IDataMapper.cs" />
     <Compile Include="Data\ProductData.cs" />
-    <Compile Include="Products\AuthorOfGoods.cs" />
     <Compile Include="Products\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -70,12 +70,13 @@ namespace ConsoleShop.MainForShop
         {
             Console.Clear();
             var data = new ProductData();
+            Console.WriteLine("Выберите категорию : ");
             Console.WriteLine(data.GetAllCategories());
             OpenASpecificCategory(Console.ReadLine().Replace(" ", string.Empty));
         }
         private void OpenASpecificCategory(string key)
         {
-
+            
         }
         #endregion
 

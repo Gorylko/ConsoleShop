@@ -30,14 +30,42 @@ namespace ConsoleShop.Data
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
-                    int num = 1;
                     while (reader.Read())
                     {
-                        allCategories += $"{num}." + (string)reader.GetValue(1) + NewLine;
-                        num++;
+                        allCategories += reader.GetInt32(0) + "." + reader.GetString(1) + NewLine;
                     }
                 }
                 return allCategories;
+            }
+        }
+        public List<Product> GetSpecificCategoryList(int categoryId)
+        {
+            List<Product> products = new List<Product>();
+            using (var connection = new SqlConnection(ConnectionToConsoleShopString))
+            {
+                var productcommand = new SqlCommand("SELECT * FROM Product", connection);
+                SqlDataReader productreader = productcommand.ExecuteReader();
+                var categorycommand = new SqlCommand($"SELECT * FROM Category WHERE CategoryId = {categoryId}", connection);
+                SqlDataReader categoryreader = categorycommand.ExecuteReader();
+                if (productreader.HasRows)
+                {
+                    while(productreader.Read())
+                    {
+                        if((int)productreader["CategoryId"] == categoryId)
+                        {
+                            products.Add(new Product(
+                                productreader["Id"],
+                                productreader["Name"],
+                                productreader["Description"],
+                                productreader["Price"],
+                                productreader["CreationDate"],
+                                productreader["LastModifiedDate"],
+                                categoryreader[""]
+                                ))
+                        }
+                    }
+                }
+                return products;
             }
         }
     }
