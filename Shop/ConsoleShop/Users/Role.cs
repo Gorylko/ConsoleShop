@@ -2,10 +2,8 @@
 {
     public enum RoleType
     {
-        Guest,
-        User,
+        Administrator,
         Editor,
-        Administrator
-
+        User
     }
 }

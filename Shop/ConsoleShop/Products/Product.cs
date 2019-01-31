@@ -24,16 +24,16 @@ namespace ConsoleShop.Products
             State = state;
         }
 
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public int Price { get; private set; }
-        public string CreationDate { get; private set; }
-        public string LastModifiedDate { get; private set; }
-        public string Category { get; private set; }
-        public User Author { get; private set; }
-        public string LocationOfProduct { get; private set; }
-        public string State { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Price { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public string Category { get; set; }
+        public User Author { get; set; }
+        public string LocationOfProduct { get; set; }
+        public string State { get; set; }
 
 
         public string GetInfoAboutProduct()

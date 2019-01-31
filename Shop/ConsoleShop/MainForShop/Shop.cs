@@ -76,7 +76,12 @@ namespace ConsoleShop.MainForShop
         }
         private void OpenASpecificCategory(string key)
         {
-            
+            var data = new ProductData();
+            List<Product> productsincategory = data.GetSpecificCategoryList(int.Parse(key)); 
+            foreach(Product product in productsincategory)
+            {
+                product.GetInfoAboutProduct();
+            }
         }
         #endregion
 

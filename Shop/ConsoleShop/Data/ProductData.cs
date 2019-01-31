@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleShop.Users;
 using ConsoleShop.Products;
 using System.Data.SqlClient;
 using static ConsoleShopLibrary.Constants.AllConst;
@@ -41,36 +42,43 @@ namespace ConsoleShop.Data
         public List<Product> GetSpecificCategoryList(int categoryId)
         {
             List<Product> products = new List<Product>();
+            string query = "USE ConsoleShop; SELECT * FROM Product p " +
+                "LEFT JOIN Category c ON p.CategoryId = c.CategoryId " +
+                "LEFT JOIN ProductState s ON p.StateId = s.StateId " +
+                "LEFT JOIN Location l ON p.LocationId = l.LocationId " +
+                "LEFT JOIN [User] u ON p.UserId = u.UserId " +
+                "LEFT JOIN Role r ON u.RoleId = r.RoleId;";
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {
-                var productcommand = new SqlCommand("SELECT * FROM Product", connection);
-                SqlDataReader productreader = productcommand.ExecuteReader();
-                var categorycommand = new SqlCommand($"SELECT * FROM Category WHERE CategoryId = {categoryId}", connection);
-                SqlDataReader categoryreader = categorycommand.ExecuteReader();
-                var authorcommand = new SqlCommand($"SELECT * FROM User WHERE UserId = {productreader["UserId"]}");
-                SqlDataReader authorreader = authorcommand.ExecuteReader();
-                var locationcommand = new SqlCommand($"SELECT * FROM Location WHERE LocationId = {productreader["LocationId"]}");
-                SqlDataReader locationreader = authorcommand.ExecuteReader();
-                var statecommand = new SqlCommand($"SELECT * FROM ProductState WHERE StateId = {productreader["StateId"]}");
-                SqlDataReader statereader = authorcommand.ExecuteReader();
-
-                if (productreader.HasRows)
+                connection.Open();
+                var productcommand = new SqlCommand(query, connection);
+                SqlDataReader reader = productcommand.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    while(productreader.Read())
+                    while (reader.Read())
                     {
-                        if((int)productreader["CategoryId"] == categoryId)
+
+
+                        if ((int)reader["CategoryId"] == categoryId)
                         {
+
                             products.Add(new Product(
-                                (int)productreader["Id"],
-                                (string)productreader["Name"],
-                                (string)productreader["Description"],
-                                (int)productreader["Price"],
-                                (string)productreader["CreationDate"],
-                                (string)productreader["LastModifiedDate"],
-                                (string)categoryreader["Name"],
-                                new Users.User((string)authorreader["Login"], (string)authorreader["Email"], (string)authorreader["PhoneNumber"]),
-                                (string)locationreader["Location"],
-                                (string)statereader["State"]
+                                (int)reader["Id"],
+                                (string)reader["Name"],
+                                (string)reader["Description"],
+                                (int)reader["Price"],
+                                (string)reader["CreationDate"],
+                                (string)reader["LastModifiedDate"],
+                                (string)reader["Name"],
+
+                                new User((string)reader["Login"],
+                                (string)reader["Password"],
+                                (string)reader["Email"],
+                                (string)reader["PhoneNumber"],
+                                (RoleType)reader["RoleId"] - 1),
+
+                                (string)reader["Location"],
+                                (string)reader["State"]
                                 ));
                         }
                     }

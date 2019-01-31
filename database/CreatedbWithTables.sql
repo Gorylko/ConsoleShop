@@ -23,14 +23,23 @@ CREATE TABLE [dbo].[ProductState]
 	PRIMARY KEY CLUSTERED([StateId]ASC)
 );
 GO
+CREATE TABLE [dbo].[Role]
+(
+	[RoleId] INT IDENTITY (1,1) NOT NULL,
+	[Name] NVARCHAR(20) NOT NULL,
+	PRIMARY KEY CLUSTERED([RoleId] ASC)
+);
+GO
 CREATE TABLE [dbo].[User]
 (
 	[UserId] INT IDENTITY (1,1) NOT NULL,
+	[RoleId] INT NOT NULL,
    	[Login] NVARCHAR(20) NOT NULL,
 	[Password] NVARCHAR(20) NOT NULL,
 	[Email] NVARCHAR(20) NOT NULL,
-	[PhoneNumber] NVARCHAR(15) NULL
- 	PRIMARY KEY CLUSTERED([UserId] ASC)
+	[PhoneNumber] NVARCHAR(15) NULL,
+ 	PRIMARY KEY CLUSTERED([UserId] ASC),
+	FOREIGN KEY(RoleId) REFERENCES [dbo].[Role]([RoleId])
 );
 GO
 CREATE TABLE [dbo].[Product]
