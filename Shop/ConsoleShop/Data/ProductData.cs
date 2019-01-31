@@ -59,25 +59,28 @@ namespace ConsoleShop.Data
                     {
 
 
-                        if ((int)reader["CategoryId"] == categoryId)
+                        if ((int)reader["CategoryId"] == categoryId) //Проблемное место ;(
                         {
 
                             products.Add(new Product(
                                 (int)reader["Id"],
-                                (string)reader["Name"],
+                                (string)reader["ProductName"],
                                 (string)reader["Description"],
                                 (decimal)reader["Price"],
                                 (DateTime)reader["CreationDate"],
                                 (DateTime)reader["LastModifiedDate"],
-                                (string)reader["Name"],
+                                (string)reader["CategoryName"],
 
-                                new User((string)reader["Login"],
+                                new User
+                                (
+                                (string)reader["Login"],
                                 (string)reader["Password"],
                                 (string)reader["Email"],
                                 (string)reader["PhoneNumber"],
-                                (RoleType)reader["RoleId"] - 1),
+                                (RoleType)((int)reader["RoleId"])
+                                ),
 
-                                (string)reader["Location"],
+                                (string)reader["LocationName"],
                                 (string)reader["State"]
                                 ));
                         }

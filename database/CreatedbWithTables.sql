@@ -4,7 +4,7 @@ USE [ConsoleShop];
 CREATE TABLE [dbo].[Category]
 (
 	[CategoryId] INT IDENTITY (1,1) NOT NULL,
-   	[Name] NVARCHAR(20) NOT NULL,
+   	[CategoryName] NVARCHAR(20) NOT NULL,
 
  	PRIMARY KEY CLUSTERED([CategoryId] ASC)
 );
@@ -12,7 +12,7 @@ GO
 CREATE TABLE [dbo].[Location]
 (
 	[LocationId] INT IDENTITY(1,1) NOT NULL,
-	[Name] NVARCHAR(50) NOT NULL,
+	[LocationName] NVARCHAR(50) NOT NULL,
 	PRIMARY KEY CLUSTERED([LocationId]ASC)
 );
 GO
@@ -26,7 +26,7 @@ GO
 CREATE TABLE [dbo].[Role]
 (
 	[RoleId] INT IDENTITY (1,1) NOT NULL,
-	[Name] NVARCHAR(20) NOT NULL,
+	[RoleName] NVARCHAR(20) NOT NULL,
 	PRIMARY KEY CLUSTERED([RoleId] ASC)
 );
 GO
@@ -49,7 +49,7 @@ CREATE TABLE [dbo].[Product]
 	[CategoryId]INT NOT NULL,
 	[LocationId]INT NOT NULL,
 	[StateId]INT NOT NULL,
-	[Name]NVARCHAR(MAX) NOT NULL,
+	[ProductName]NVARCHAR(MAX) NOT NULL,
 	[Description]NVARCHAR(MAX) NOT NULL,
 	[Price]DECIMAL NOT NULL,
 	[CreationDate]DATETIME NULL,
