@@ -10,7 +10,7 @@ namespace ConsoleShop.Products
 {
     public class Product
     {
-        public Product(int id, string name, string description, int price, string creationdate, string modifieddate, string category, User author, string locationofproduct, string state)
+        public Product(int id, string name, string description, decimal price, DateTime creationdate, DateTime modifieddate, string category, User author, string locationofproduct, string state)
         {
             Id = id;
             Name = name;
@@ -27,7 +27,7 @@ namespace ConsoleShop.Products
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public string Category { get; set; }

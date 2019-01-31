@@ -66,9 +66,9 @@ namespace ConsoleShop.Data
                                 (int)reader["Id"],
                                 (string)reader["Name"],
                                 (string)reader["Description"],
-                                (int)reader["Price"],
-                                (string)reader["CreationDate"],
-                                (string)reader["LastModifiedDate"],
+                                (decimal)reader["Price"],
+                                (DateTime)reader["CreationDate"],
+                                (DateTime)reader["LastModifiedDate"],
                                 (string)reader["Name"],
 
                                 new User((string)reader["Login"],
