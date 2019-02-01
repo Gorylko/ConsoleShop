@@ -13,7 +13,7 @@ namespace ConsoleShop.MainForShop
     public class Shop
     {
         #region Shop
-        private List<Product> _catalog { get; set; }
+        private List<Product> Catalog { get; set; }
         public User MainUser { get; set; }
 
         public void OpenMainMenu() //1

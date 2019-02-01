@@ -30,6 +30,7 @@ namespace ConsoleShop.Data
                 return allCategories;
             }
         }
+
         public List<Product> GetSpecificCategoryList(int categoryId)
         {
             List<Product> products = new List<Product>();

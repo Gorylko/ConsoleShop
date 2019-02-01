@@ -17,12 +17,6 @@ namespace ConsoleShop.Users
             this.PhoneNumber = phone;
             this.Role = role;
         }
-        //public User(string login, string password, string email) //for Product
-        //{
-        //    this.Login = login;
-        //    this.Password = password;
-        //    this.Email = email;
-        //}
 
         private string _login;
         public string Login
