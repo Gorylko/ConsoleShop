@@ -25,7 +25,7 @@ namespace ConsoleShop.MainForShop
                 switch (Console.ReadLine().Replace(" ", string.Empty))
                 {
                     case "1":
-                        OpenCategoryMenu();
+                        OpenCategorySelectionMenu();
                         break;
                     case "2":
                         break;
@@ -66,7 +66,7 @@ namespace ConsoleShop.MainForShop
         }
 
 
-        private void OpenCategoryMenu() 
+        private void OpenCategorySelectionMenu() 
         {
             Console.Clear();
             var data = new ProductData();
