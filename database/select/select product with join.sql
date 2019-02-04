@@ -1,7 +1,4 @@
 ﻿USE ConsoleShop; 
-SELECT * FROM Product p 
-LEFT JOIN Category c ON p.CategoryId = c.CategoryId 
-LEFT JOIN ProductState s ON p.StateId = s.StateId 
-LEFT JOIN Location l ON p.LocationId = l.LocationId 
-LEFT JOIN [User] u ON p.UserId = u.UserId 
-LEFT JOIN Role r ON u.RoleId = r.RoleId;
+SELECT P.*, C.[CategoryName], L.[LocationName], PS.[State], R.[RoleName], U.[Login], U.[Email], U.[PhoneNumber]
+FROM [Product] AS P, [Category] AS C, [Location] AS L, [ProductState] AS PS, [Role] AS R, [User] AS U
+WHERE P.CategoryId = C.CategoryId AND P.LocationId = L.LocationId AND P.StateId = PS.StateId AND P.UserId = U.UserId AND U.RoleId = R.RoleId

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ConsoleShop.Users;
 using ConsoleShop.Products;
 using System.Data.SqlClient;
+using ConsoleShop.Users;
 using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.Data
@@ -34,12 +35,10 @@ namespace ConsoleShop.Data
         public List<Product> GetSpecificCategoryList(int categoryId)
         {
             List<Product> products = new List<Product>();
-            string query = "SELECT * FROM Product p " +
-                "LEFT JOIN Category c ON p.CategoryId = c.CategoryId " +
-                "LEFT JOIN ProductState s ON p.StateId = s.StateId " +
-                "LEFT JOIN Location l ON p.LocationId = l.LocationId " +
-                "LEFT JOIN [User] u ON p.UserId = u.UserId " +
-                "LEFT JOIN Role r ON u.RoleId = r.RoleId;";
+            string query = "SELECT * FROM Product p " + NewLine +
+                "SELECT P.*, C.[CategoryName], L.[LocationName], PS.[State], R.[RoleName], U.[Login], U.[Email], U.[PhoneNumber] " + NewLine +
+                "FROM [Product] AS P, [Category] AS C, [Location] AS L, [ProductState] AS PS, [Role] AS R, [User] AS U " + NewLine +
+                "WHERE P.CategoryId = C.CategoryId AND P.LocationId = L.LocationId AND P.StateId = PS.StateId AND P.UserId = U.UserId AND U.RoleId = R.RoleId ";
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {
                 connection.Open();
@@ -53,27 +52,27 @@ namespace ConsoleShop.Data
                         {
                             try
                             {
-                                products.Add(new Product(
-                                    (int)reader["Id"],
-                                    (string)reader["ProductName"],
-                                    (string)reader["Description"],
-                                    (decimal)reader["Price"],
-                                    (DateTime)reader["CreationDate"],
-                                    (DateTime)reader["LastModifiedDate"],
-                                    (string)reader["CategoryName"],
-                                    new User
-                                    (
-                                        (string)reader["Login"],
-                                        (string)reader["Password"],
-                                        (string)reader["Email"],
-                                        (string)reader["PhoneNumber"],
-                                        (RoleType)(reader["RoleId"])
-                                    ),
-                                    (string)reader["LocationName"],
-                                    (string)reader["State"]
-                                    ));
+                                products.Add(new Product
+                                {
+                                    Id = (int)reader["Id"],
+                                    Name = (string)reader["ProductName"],
+                                    Description = (string)reader["Description"],
+                                    Price = (decimal)reader["Price"],
+                                    CreationDate = (DateTime)reader["CreationDate"],
+                                    LastModifiedDate = (DateTime)reader["LastModifiedDate"],
+                                    Category = (string)reader["CategoryName"],
+                                    Author = new User
+                                    {
+                                        Login = (string)reader["Login"],
+                                        Email = (string)reader["Email"],
+                                        PhoneNumber = (string)reader["PhoneNumber"],
+                                        Role = (RoleType)(reader["RoleName"])
+                                    },
+                                    LocationOfProduct = (string)reader["LocationName"],
+                                    State = (string)reader["State"]
+                                });
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 Console.WriteLine("Что-то произошло... Инфо об ошибке : ");
                                 Console.WriteLine(ex.Message);

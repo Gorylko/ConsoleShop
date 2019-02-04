@@ -10,19 +10,19 @@ namespace ConsoleShop.Products
 {
     public class Product
     {
-        public Product(int id, string name, string description, decimal price, DateTime creationdate, DateTime modifieddate, string category, User author, string locationofproduct, string state)
-        {
-            Id = id;
-            Name = name;
-            Description = description;
-            Price = price;
-            CreationDate = creationdate;
-            LastModifiedDate = modifieddate;
-            Category = category;
-            Author = author;
-            LocationOfProduct = locationofproduct;
-            State = state;
-        }
+        //public Product(int id, string name, string description, decimal price, DateTime creationdate, DateTime modifieddate, string category, User author, string locationofproduct, string state)
+        //{
+        //    Id = id;
+        //    Name = name;
+        //    Description = description;
+        //    Price = price;
+        //    CreationDate = creationdate;
+        //    LastModifiedDate = modifieddate;
+        //    Category = category;
+        //    Author = author;
+        //    LocationOfProduct = locationofproduct;
+        //    State = state;
+        //}
 
         public int Id { get; set; }
         public string Name { get; set; }

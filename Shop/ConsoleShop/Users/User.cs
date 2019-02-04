@@ -9,14 +9,6 @@ namespace ConsoleShop.Users
 {
     public class User
     {
-        public User(string login, string password, string email, string phone, RoleType role)
-        {
-            this.Login = login;
-            this.Password = password;
-            this.Email = email;
-            this.PhoneNumber = phone;
-            this.Role = role;
-        }
 
         private string _login;
         public string Login
@@ -25,7 +17,7 @@ namespace ConsoleShop.Users
             {
                 return _login;
             }
-            private set
+            set
             {
                 if (value.Length >= MinLoginSize)
                     _login = value;
@@ -43,7 +35,7 @@ namespace ConsoleShop.Users
             {
                 return _password;
             }
-            private set
+            set
             {
                 if (value.Length >= MinPasswordSize)
                     _login = value;
@@ -61,7 +53,7 @@ namespace ConsoleShop.Users
             {
                 return _email;
             }
-            private set
+            set
             {
                 if (value.Contains("@") && value.Contains(".")) //Можно было регулярным выражением, но я их не знаю)
                     _email = value;
@@ -79,13 +71,13 @@ namespace ConsoleShop.Users
             {
                 return _phonenumber;
             }
-            private set
+            set
             {
                 _email = value;
             }
         }
 
-        public RoleType Role { get; private set; }
+        public RoleType Role { get; set; }
 
 
     }
