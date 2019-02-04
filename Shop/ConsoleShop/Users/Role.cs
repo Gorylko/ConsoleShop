@@ -3,7 +3,7 @@
     public enum RoleType
     {
         Administrator = 1,
-        Editor = 2,
+        Moderator = 2,
         User = 3
     }
 }

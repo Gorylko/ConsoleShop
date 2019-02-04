@@ -68,20 +68,25 @@ namespace ConsoleShop.MainForShop
 
         private void OpenCategorySelectionMenu() 
         {
-            Console.Clear();
-            var data = new ProductData();
-            Console.WriteLine("Выберите категорию : ");
-            Console.WriteLine(data.GetAllCategories());
-            OpenASpecificCategory(Console.ReadLine().Replace(" ", string.Empty));
+            while (true)
+            {
+                Console.Clear();
+                var data = new ProductData();
+                Console.WriteLine("Выберите категорию : ");
+                Console.WriteLine(data.GetAllCategories());
+                OpenASpecificCategory(Console.ReadLine().Replace(" ", string.Empty));
+            }
         }
         private void OpenASpecificCategory(string key)
         {
             var data = new ProductData();
-            List<Product> productsincategory = data.GetSpecificCategoryList(int.Parse(key)); 
+            List<Product> productsincategory = data.GetSpecificCategoryList(int.Parse(key));
+            Console.Clear();
             foreach(Product product in productsincategory)
             {
-                product.GetInfoAboutProduct();
+                Console.Write(product.GetInfoAboutProduct());
             }
+            Console.ReadKey();
         }
         #endregion
 

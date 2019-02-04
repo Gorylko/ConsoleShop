@@ -38,10 +38,10 @@ namespace ConsoleShop.Products
 
         public string GetInfoAboutProduct()
         {
-            return NewLine + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
-                "Дата изготовления :" + this.CreationDate + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
-                "Категория : " + Category + NewLineX2 + "Контакты производителя : " + this.Author.Login + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
-                "Почта : " + this.Author.Email + NewLineX2 + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.State + NewLineX2;
+            return NewLineX2 + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
+                "Дата изготовления : " + this.CreationDate + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
+                "Категория : " + Category + NewLine + "Контакты производителя : " + this.Author.Role + NewLine + this.Author.Login + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
+                "Почта : " + this.Author.Email + NewLine + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.State + NewLineX2;
         }
 
 

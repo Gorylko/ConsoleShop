@@ -1,4 +1,8 @@
 ﻿USE ConsoleShop; 
-SELECT P.*, C.[CategoryName], L.[LocationName], PS.[State], R.[RoleName], U.[Login], U.[Email], U.[PhoneNumber]
-FROM [Product] AS P, [Category] AS C, [Location] AS L, [ProductState] AS PS, [Role] AS R, [User] AS U
-WHERE P.CategoryId = C.CategoryId AND P.LocationId = L.LocationId AND P.StateId = PS.StateId AND P.UserId = U.UserId AND U.RoleId = R.RoleId
+SELECT Product.*, [Category].[CategoryName] AS [Category], [Location].[LocationName] AS [Location], [ProductState].[State] AS [State], [Role].[RoleName] AS [Role], [User].[Login] AS [Login], [User].[Email] AS Email, [User].[PhoneNumber] AS PhoneNumber
+FROM [Product]
+JOIN [Category] ON [Product].[CategoryId] = [Category].CategoryId
+JOIN [Location] ON [Product].[LocationId] = [Location].LocationId
+JOIN [ProductState] ON [Product].[StateId] = [ProductState].StateId
+JOIN [User] ON [Product].[UserId] = [User].[UserId]
+JOIN [Role] ON [User].[RoleId] = [Role].[RoleId] 
