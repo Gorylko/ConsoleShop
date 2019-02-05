@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using ConsoleShop.Users;
 using ConsoleShop.Products;
 using System.Data.SqlClient;
-using ConsoleShop.Users;
 using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.Data
@@ -34,19 +33,11 @@ namespace ConsoleShop.Data
 
         public List<Product> GetSpecificCategoryList(int categoryId)
         {
-            string query = "USE ConsoleShop" + NewLine +
-                "SELECT Product.*, [Category].[CategoryName] AS [Category], [Location].[LocationName] AS [Location], [ProductState].[State] AS [State], [Role].[RoleName] AS [Role], [User].[Login] AS [Login], [User].[Email] AS [Email], [User].[PhoneNumber] AS [PhoneNumber] " + NewLine +
-                "FROM [Product]" + NewLine +
-                "JOIN [Category] ON [Product].[CategoryId] = [Category].CategoryId" + NewLine +
-                "JOIN [Location] ON [Product].[LocationId] = [Location].LocationId" + NewLine +
-                "JOIN [ProductState] ON [Product].[StateId] = [ProductState].StateId" + NewLine +
-                "JOIN [User] ON [Product].[UserId] = [User].[UserId]" + NewLine +
-                "JOIN [Role] ON [User].[RoleId] = [Role].[RoleId]";
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {
                 List<Product> products = new List<Product>();
                 connection.Open();
-                var productcommand = new SqlCommand(query, connection);
+                var productcommand = new SqlCommand(SelectProductInDbString, connection);
                 SqlDataReader reader = productcommand.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -93,6 +84,11 @@ namespace ConsoleShop.Data
         private RoleType ConvertToRoleType(string roleName)
         {
             return (RoleType)Enum.Parse(typeof(RoleType), roleName);
+        }
+        public List<Product> GetSearchList(string searchParameter, string searchQuery) //возвращает лист продуктов, удовлетворяющих поиску
+        {
+            List<Product> products = new List<Product>();
+            return products;
         }
     }
 }

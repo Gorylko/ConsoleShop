@@ -15,6 +15,7 @@ namespace ConsoleShop.MainForShop
         #region Shop
         private List<Product> Catalog { get; set; }
         public User MainUser { get; set; }
+        private ProductData _dataTool = new ProductData();
 
         public void OpenMainMenu() //1
         {
@@ -28,6 +29,7 @@ namespace ConsoleShop.MainForShop
                         OpenCategorySelectionMenu();
                         break;
                     case "2":
+                        OpenSearchSelectMenu();
                         break;
                     case "3":
                         break;
@@ -64,29 +66,70 @@ namespace ConsoleShop.MainForShop
                 return mainmenustring + NewLine + "Чтобы вернуться назад - пиши /r" + NewLine;
             }
         }
-
+        private string GetSearchMenuString()
+        {
+            return "Выберите по какому полю вы хотите начать поиск :" + NewLineX2 +
+                "1.Имя" + NewLine + "2.Описание" + NewLine + "3.Место производства" + NewLine + 
+                "4.Дата производства" + NewLine + "5.Логин пользователя" + NewLineX2 + "6.Назад"; 
+        }
 
         private void OpenCategorySelectionMenu() 
         {
             while (true)
             {
                 Console.Clear();
-                var data = new ProductData();
                 Console.WriteLine("Выберите категорию : ");
-                Console.WriteLine(data.GetAllCategories());
+                Console.WriteLine(_dataTool.GetAllCategories());
                 OpenASpecificCategory(Console.ReadLine().Replace(" ", string.Empty));
             }
         }
         private void OpenASpecificCategory(string key)
         {
-            var data = new ProductData();
-            List<Product> productsincategory = data.GetSpecificCategoryList(int.Parse(key));
+            List<Product> productsincategory = _dataTool.GetSpecificCategoryList(int.Parse(key));
             Console.Clear();
             foreach(Product product in productsincategory)
             {
                 Console.Write(product.GetInfoAboutProduct());
             }
             Console.ReadKey();
+        }
+        private void OpenSearchSelectMenu()
+        {
+            while (true)
+            {
+                Console.Write(GetSearchMenuString());
+                switch (Console.ReadLine().Replace(" ", string.Empty))
+                {
+                    case "1":
+                        OpenSearchMenu("Name");
+                        break;
+                    case "2":
+                        OpenSearchMenu("Description");
+                        break;
+                    case "3":
+                        OpenSearchMenu("Location");
+                        break;
+                    case "4":
+                        OpenSearchMenu("CreationDate");
+                        break;
+                    case "5":
+                        OpenSearchMenu("Login");
+                        break;
+                    case "6":
+                        return;
+                    default:
+                        break;
+                }
+            }
+        }
+        private void OpenSearchMenu(string searchParameter)
+        {
+            Console.WriteLine("Введите свой запрос :");
+            List<Product> products = _dataTool.GetSearchList(searchParameter, Console.ReadLine().Replace(" ", string.Empty));
+            foreach(Product product in products)
+            {
+                Console.WriteLine(product.GetInfoAboutProduct());
+            }
         }
         #endregion
 
