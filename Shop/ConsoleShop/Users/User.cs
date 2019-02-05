@@ -45,24 +45,7 @@ namespace ConsoleShop.Users
                 }
             }
         }
-
-        private string _email;
-        public string Email
-        {
-            get
-            {
-                return _email;
-            }
-            set
-            {
-                if (value.Contains("@") && value.Contains(".")) //Можно было регулярным выражением, но я их не знаю)
-                    _email = value;
-                else
-                {
-                    // позже
-                }
-            }
-        }
+        public string Email { get; set; }
 
         private string _phonenumber;
         public string PhoneNumber
@@ -73,7 +56,7 @@ namespace ConsoleShop.Users
             }
             set
             {
-                _email = value;
+                _phonenumber = value;
             }
         }
 

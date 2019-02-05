@@ -70,7 +70,7 @@ namespace ConsoleShop.Data
                                         Login = (string)reader["Login"],
                                         Email = (string)reader["Email"],
                                         PhoneNumber = (string)reader["PhoneNumber"],
-                                        Role = (RoleType)Enum.Parse(typeof(RoleType),(string)(reader["Role"]))
+                                        Role = ConvertToRoleType((string)reader["Role"])
                                     },
                                     LocationOfProduct = (string)reader["Location"],
                                     State = (string)reader["State"]
@@ -88,6 +88,11 @@ namespace ConsoleShop.Data
                 }
                 return products;
             }
+
+        }
+        private RoleType ConvertToRoleType(string roleName)
+        {
+            return (RoleType)Enum.Parse(typeof(RoleType), roleName);
         }
     }
 }
