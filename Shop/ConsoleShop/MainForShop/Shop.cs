@@ -97,11 +97,12 @@ namespace ConsoleShop.MainForShop
         {
             while (true)
             {
-                Console.Write(GetSearchMenuString());
+                Console.Clear();
+                Console.WriteLine(GetSearchMenuString());
                 switch (Console.ReadLine().Replace(" ", string.Empty))
                 {
                     case "1":
-                        OpenSearchMenu("Name");
+                        OpenSearchMenu("ProductName");
                         break;
                     case "2":
                         OpenSearchMenu("Description");
@@ -124,12 +125,18 @@ namespace ConsoleShop.MainForShop
         }
         private void OpenSearchMenu(string searchParameter)
         {
+            Console.Clear();
             Console.WriteLine("Введите свой запрос :");
             List<Product> products = _dataTool.GetSearchList(searchParameter, Console.ReadLine().Replace(" ", string.Empty));
             foreach(Product product in products)
             {
                 Console.WriteLine(product.GetInfoAboutProduct());
             }
+            if(products.Count == 0)
+            {
+                Console.Write("Ничего не найдено :(");
+            }
+            Console.ReadKey(true);
         }
         #endregion
 

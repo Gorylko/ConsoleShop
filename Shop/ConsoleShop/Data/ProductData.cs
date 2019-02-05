@@ -37,8 +37,8 @@ namespace ConsoleShop.Data
             {
                 List<Product> products = new List<Product>();
                 connection.Open();
-                var productcommand = new SqlCommand(SelectProductInDbString, connection);
-                SqlDataReader reader = productcommand.ExecuteReader();
+                var command = new SqlCommand(SelectProductInDbString, connection);
+                SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -87,8 +87,52 @@ namespace ConsoleShop.Data
         }
         public List<Product> GetSearchList(string searchParameter, string searchQuery) //возвращает лист продуктов, удовлетворяющих поиску
         {
-            List<Product> products = new List<Product>();
-            return products;
+            using (var connection = new SqlConnection(ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                List<Product> products = new List<Product>();
+                var command = new SqlCommand(SelectProductInDbString, connection);
+                SqlDataReader reader = command.ExecuteReader(); 
+                if(reader.HasRows)
+                {
+                    while(reader.Read())
+                    {
+                        if(reader[searchParameter].ToString().Contains(searchQuery))
+                        {
+                            try
+                            {
+                                products.Add(new Product
+                                {
+                                    Id = (int)reader["Id"],
+                                    Name = (string)reader["ProductName"],
+                                    Description = (string)reader["Description"],
+                                    Price = (decimal)reader["Price"],
+                                    CreationDate = (DateTime)reader["CreationDate"],
+                                    LastModifiedDate = (DateTime)reader["LastModifiedDate"],
+                                    Category = (string)reader["Category"],
+                                    Author = new User
+                                    {
+                                        Login = (string)reader["Login"],
+                                        Email = (string)reader["Email"],
+                                        PhoneNumber = (string)reader["PhoneNumber"],
+                                        Role = ConvertToRoleType((string)reader["Role"])
+                                    },
+                                    LocationOfProduct = (string)reader["Location"],
+                                    State = (string)reader["State"]
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("Что-то произошло... Инфо об ошибке : ");
+                                Console.WriteLine(ex.Message);
+                                Console.WriteLine("Нажмите любую клавишу, чтобы пройти дальше");
+                                Console.ReadKey(true);
+                            }
+                        }
+                    }
+                }
+                return products;
+            }
         }
     }
 }
