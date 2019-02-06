@@ -39,6 +39,6 @@ namespace ConsoleShopLibrary.Constants
 
         public const ConsoleColor YellowColor = ConsoleColor.Yellow;
 
-        public const ConsoleColor DefaultColor = ConsoleColor.White;
+        public const ConsoleColor DefaultColor = ConsoleColor.Green;
     }
 }

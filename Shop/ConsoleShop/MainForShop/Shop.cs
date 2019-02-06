@@ -15,7 +15,7 @@ namespace ConsoleShop.MainForShop
         #region Shop
         private List<Product> Catalog { get; set; }
         public User MainUser { get; set; }
-        private ProductData _dataTool = new ProductData();
+        private ProductData _dataTool = new ProductData(); //решил закинуть сюда, чтобы не объявлять в каждом методе
 
         public void OpenMainMenu() //1
         {
@@ -134,7 +134,7 @@ namespace ConsoleShop.MainForShop
             }
             if(products.Count == 0)
             {
-                Console.Write("Ничего не найдено :(");
+                Console.Write("Ничего не найдено :(" + NewLine + "Нажми любую клавишу, чтобы вернуться назад...");
             }
             Console.ReadKey(true);
         }

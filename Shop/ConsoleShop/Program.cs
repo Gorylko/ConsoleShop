@@ -14,7 +14,6 @@ namespace ConsoleShop
         static void Main()
         {
             Console.ForegroundColor = DefaultColor;
-            Console.CursorVisible = false;
             var AglyExspress = new Shop();
             AglyExspress.OpenAuthorizationMenu();
         }
