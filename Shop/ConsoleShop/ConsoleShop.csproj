@@ -49,7 +49,7 @@
     <Compile Include="Products\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MainForShop\Authentication.cs" />
+    <Compile Include="MainForShop\UserSystem.cs" />
     <Compile Include="MainForShop\Shop.cs" />
     <Compile Include="Users\Role.cs" />
     <Compile Include="Users\User.cs" />
