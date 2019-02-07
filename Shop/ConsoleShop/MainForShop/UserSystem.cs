@@ -9,40 +9,33 @@ using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.MainForShop
 {
-    public class UserSystem // с помощью папочки Data будет производить авторизацию, регистрацию, открывать менюшку
+    public class UserSystem
     {
-        public User LoginToAccount(string login, string password)
+        public User GetAuthorizedUser(string login, string password)
         {
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {
                 connection.Open();
-                try
+                var command = new SqlCommand($"SELECT 1 FROM User WHERE Login = {login} AND Password = {password}", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    var command = new SqlCommand($"SELECT 1 FROM User WHERE Login = {login} AND Password = {password}", connection);
-                    SqlDataReader reader = command.ExecuteReader();
-                    if(reader.HasRows)
+                    return new User
                     {
-                        return new User
-                        {
-                            Login = (string)reader["Login"],
-                            Password = (string)reader["Password"],
-                            Email = (string)reader["Email"],
-                            PhoneNumber = (string)reader["PhoneNumber"],
-                            Role = ConvertToRoleType((int)reader["RoleId"])
-                        };
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                        Login = (string)reader["Login"],
+                        Password = (string)reader["Password"],
+                        Email = (string)reader["Email"],
+                        PhoneNumber = (string)reader["PhoneNumber"],
+                        Role = ConvertToRoleType((int)reader["RoleId"])
+                    };
                 }
-                catch(Exception ex)
+                else
                 {
-                    return null;
+                    throw new Exception("Неверный логин или пароль");
                 }
             }
         }
-        public User Register(string login, string password, string email, string phonenumber)
+        public User GetNewUser(string login, string password, string email, string phonenumber)
         {
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {
@@ -59,10 +52,9 @@ namespace ConsoleShop.MainForShop
                         Role = RoleType.User
                     };
                 }
-                catch(Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("Логин или почта уже заняты, попробуйте что-нибудь поменять :)");
-                    return null;
+                    throw new Exception("Логин или почта уже заняты, попробуйте что-нибудь поменять :)");
                 }
             }
         }

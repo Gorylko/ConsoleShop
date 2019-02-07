@@ -61,7 +61,7 @@ namespace ConsoleShop.MainForShop
                     mainmenustring += "6.(!!!)Редактировать пользователей";
                 return mainmenustring + NewLine + "Чтобы вернуться назад - пиши /r" + NewLine;
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 return mainmenustring + NewLine + "Чтобы вернуться назад - пиши /r" + NewLine;
             }
@@ -69,11 +69,11 @@ namespace ConsoleShop.MainForShop
         private string GetSearchMenuString()
         {
             return "Выберите по какому полю вы хотите начать поиск :" + NewLineX2 +
-                "1.Имя" + NewLine + "2.Описание" + NewLine + "3.Место производства" + NewLine + 
-                "4.Дата производства" + NewLine + "5.Логин пользователя" + NewLineX2 + "6.Назад"; 
+                "1.Имя" + NewLine + "2.Описание" + NewLine + "3.Место производства" + NewLine +
+                "4.Дата производства" + NewLine + "5.Логин пользователя" + NewLineX2 + "6.Назад";
         }
 
-        private void OpenCategorySelectionMenu() 
+        private void OpenCategorySelectionMenu()
         {
             while (true)
             {
@@ -87,7 +87,7 @@ namespace ConsoleShop.MainForShop
         {
             List<Product> productsincategory = _dataTool.GetSpecificCategoryList(int.Parse(key));
             Console.Clear();
-            foreach(Product product in productsincategory)
+            foreach (Product product in productsincategory)
             {
                 Console.Write(product.GetInfoAboutProduct());
             }
@@ -128,11 +128,11 @@ namespace ConsoleShop.MainForShop
             Console.Clear();
             Console.WriteLine("Введите свой запрос :");
             List<Product> products = _dataTool.GetSearchList(searchParameter, Console.ReadLine().Replace(" ", string.Empty));
-            foreach(Product product in products)
+            foreach (Product product in products)
             {
                 Console.WriteLine(product.GetInfoAboutProduct());
             }
-            if(products.Count == 0)
+            if (products.Count == 0)
             {
                 Console.Write("Ничего не найдено :(" + NewLine + "Нажми любую клавишу, чтобы вернуться назад...");
             }
@@ -154,9 +154,10 @@ namespace ConsoleShop.MainForShop
                 switch (Console.ReadLine().Replace(" ", string.Empty))
                 {
                     case "/a":
-
+                        OpenAccountLoginMenu();
                         break;
                     case "/r":
+                        OpenRegistrationMenu();
                         break;
                     case "/g":
                         LoginAsAGuest();
@@ -168,24 +169,40 @@ namespace ConsoleShop.MainForShop
                 }
             }
         }
-        public void OpenRegistrationMenu() //еще разрабатывается
+        private void OpenRegistrationMenu() //еще разрабатывается
         {
             while (true)
             {
                 Console.WriteLine("Введите логин ");
-                if (true)
-                    break;
-                Console.WriteLine("Данный логин занят!");
             }
-            Console.WriteLine("Введите пароль ");
+        }
+        private void OpenAccountLoginMenu()
+        {
             while (true)
             {
-                Console.WriteLine("Введите вашу почту ");
-                if (true)
-                    break;
-                Console.WriteLine("Данная почта занята!");
-            }
+                Console.Clear();
+                Console.WriteLine("1.Авторизироваться" + NewLine + "2.Назад");
+                switch (Console.ReadLine().Replace(" ", string.Empty))
+                {
+                    case "1":
 
+                        try
+                        {
+                            Console.WriteLine("Введите логин : ");
+                            string password = Console.ReadLine().Replace(" ", string.Empty);
+                            Console.WriteLine("Введите пароль : ");
+                            string login = Console.ReadLine().Replace(" ", string.Empty);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.ReadKey(true);
+                        }
+                        break;
+                    case "2":
+                        return;
+                }
+            }
         }
         public void LoginAsAGuest()
         {
