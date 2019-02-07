@@ -16,7 +16,7 @@ namespace ConsoleShop.MainForShop
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {
                 connection.Open();
-                var command = new SqlCommand($"SELECT 1 FROM User WHERE Login = {login} AND Password = {password}", connection);
+                var command = new SqlCommand($"SELECT * FROM [User] WHERE [Login] = '{login}' AND [Password] = '{password}'", connection);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.HasRows)
                 {

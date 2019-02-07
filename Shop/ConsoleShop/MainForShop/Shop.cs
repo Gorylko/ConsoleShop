@@ -16,6 +16,7 @@ namespace ConsoleShop.MainForShop
         private List<Product> Catalog { get; set; }
         public User MainUser { get; set; }
         private ProductData _dataTool = new ProductData(); //решил закинуть сюда, чтобы не объявлять в каждом методе
+        private UserSystem _system = new UserSystem();
 
         public void OpenMainMenu() //1
         {
@@ -185,13 +186,16 @@ namespace ConsoleShop.MainForShop
                 switch (Console.ReadLine().Replace(" ", string.Empty))
                 {
                     case "1":
-
+                        
                         try
                         {
                             Console.WriteLine("Введите логин : ");
                             string password = Console.ReadLine().Replace(" ", string.Empty);
                             Console.WriteLine("Введите пароль : ");
                             string login = Console.ReadLine().Replace(" ", string.Empty);
+                            MainUser = _system.GetAuthorizedUser(login, password);
+                            Console.WriteLine("Авторизация завершена успешно!");
+                            Console.ReadKey();
                         }
                         catch (Exception ex)
                         {
