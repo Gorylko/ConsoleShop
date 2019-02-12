@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShopLibrary.Constants
+namespace ConsoleShop.Data.Constants
 {
-    public static class AllConst
+    class SqlQueryConstants
     {
-
-
-
-
-
     }
 }
