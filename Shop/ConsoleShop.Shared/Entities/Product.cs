@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleShop.Users;
+using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using static ConsoleShopLibrary.Constants.AllConst;
 
-namespace ConsoleShop.Products
+namespace ConsoleShop.Shared.Entities
 {
     public class Product
     {
@@ -36,9 +37,9 @@ namespace ConsoleShop.Products
         public string State { get; set; }
 
 
-        public string GetInfoAboutProduct()
+        public string GetInfoAboutProduct() // Через StringBuilder
         {
-            return NewLineX2 + "Название : " + this.Name + NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
+            return Typography.NewLineX2 + "Название : " + this.Name + Typography.NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
                 "Дата изготовления : " + this.CreationDate + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
                 "Категория : " + Category + NewLine + "Контакты производителя : " + this.Author.Role + NewLine + this.Author.Login + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
                 "Почта : " + this.Author.Email + NewLine + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.State + NewLineX2;

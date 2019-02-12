@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop.Data
+namespace ConsoleShop.Data.Services
 {
-    public interface IDataMapper<IDataReader, T>
+    class UserService
     {
-        T GetMappedObject();
     }
 }

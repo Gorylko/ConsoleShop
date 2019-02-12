@@ -21,24 +21,8 @@ namespace ConsoleShopLibrary.Constants
 
         public const string ConnectionToUsersString = "";
 
-        public const int MinLoginSize = 5;
 
-        public const int MinPasswordSize = 5;
 
-        public const string NewLine = "\n";
 
-        public const string NewLineX2 = "\n\n";
-
-        public const string Tab = "\t";
-
-        public const string TabX2 = "\t\t";
-
-        public const ConsoleColor GreenColor = ConsoleColor.Green;
-
-        public const ConsoleColor RedColor = ConsoleColor.Red;
-
-        public const ConsoleColor YellowColor = ConsoleColor.Yellow;
-
-        public const ConsoleColor DefaultColor = ConsoleColor.Green;
     }
 }
