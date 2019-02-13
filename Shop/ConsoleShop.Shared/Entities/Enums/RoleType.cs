@@ -1,9 +1,9 @@
 ﻿namespace ConsoleShop.Shared.Entities.Enums
 {
-    public enum RoleType //поменять порядок
+    public enum RoleType 
     {
-        Administrator = 1,
+        Administrator = 3,
         Moderator = 2,
-        User = 3
+        User = 1
     }
 }

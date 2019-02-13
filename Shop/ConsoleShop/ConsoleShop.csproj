@@ -53,11 +53,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleShopLibrary\ConsoleShopLibrary.csproj">
-      <Project>{8031ab03-6cb4-4767-af9b-71e6b9017335}</Project>
-      <Name>ConsoleShopLibrary</Name>
+    <ProjectReference Include="..\ConsoleShop.Business\ConsoleShop.Business.csproj">
+      <Project>{48ae88d2-763f-416c-879a-76b1cd05defe}</Project>
+      <Name>ConsoleShop.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleShop.Shared\ConsoleShop.Shared.csproj">
+      <Project>{2dc9a0d4-383d-4aa4-bd2e-080226140312}</Project>
+      <Name>ConsoleShop.Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

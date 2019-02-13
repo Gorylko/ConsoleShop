@@ -39,10 +39,21 @@ namespace ConsoleShop.Shared.Entities
 
         public string GetInfoAboutProduct() // Через StringBuilder
         {
-            return Typography.NewLineX2 + "Название : " + this.Name + Typography.NewLine + "Описание : " + this.Description + NewLine + "Цена : " + this.Price + NewLine +
-                "Дата изготовления : " + this.CreationDate + NewLine + "Дата последнего изменения : " + this.LastModifiedDate + NewLine +
-                "Категория : " + Category + NewLine + "Контакты производителя : " + this.Author.Role + NewLine + this.Author.Login + NewLine + "Телефон : " + this.Author.PhoneNumber + NewLine +
-                "Почта : " + this.Author.Email + NewLine + "Местоположение товара : " + this.LocationOfProduct + NewLine + "Состояние : " + this.State + NewLineX2;
+            StringBuilder returnString = new StringBuilder();
+            returnString.AppendLine($"Название : {this.Name}");
+            returnString.AppendLine($"Описание : {this.Description}");
+            returnString.AppendLine($"Цена : {this.Price}");
+            returnString.AppendLine($"Дата изготовления: {this.CreationDate}");
+            returnString.AppendLine($"Дата последнего изменения : {this.LastModifiedDate}");
+            returnString.AppendLine($"Категория : {this.Category}");
+            returnString.AppendLine($"Контакты производителя : ");
+            returnString.AppendLine(this.Author.Role);
+            returnString.AppendLine(this.Author.Login);
+            returnString.AppendLine(this.Author.PhoneNumber);
+            returnString.AppendLine(this.Author.Email);
+            returnString.AppendLine($"Местоположение товара : {this.LocationOfProduct}");
+            returnString.AppendLine($"Состояние : {this.State}");
+            return returnString.ToString();
         }
 
 

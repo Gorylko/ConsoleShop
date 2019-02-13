@@ -60,7 +60,7 @@ namespace ConsoleShop.Data.Services
             }
         }
 
-        public List<Product> GetSearchList(string searchParameter, string searchQuery) //возвращает лист продуктов, удовлетворяющих поиску
+        public List<Product> GetSearchList(string searchParameter, string searchQuery) 
         {
             using (var connection = new SqlConnection(ConnectionToConsoleShopString))
             {

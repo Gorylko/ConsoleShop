@@ -41,7 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ProductData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleShop.Data\ConsoleShop.Data.csproj">
+      <Project>{ad65352b-6083-4d74-8a23-d62b1c794bf0}</Project>
+      <Name>ConsoleShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleShop.Shared\ConsoleShop.Shared.csproj">
+      <Project>{2dc9a0d4-383d-4aa4-bd2e-080226140312}</Project>
+      <Name>ConsoleShop.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

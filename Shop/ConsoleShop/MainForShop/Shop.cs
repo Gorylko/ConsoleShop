@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleShop.Products;
-using ConsoleShop.Users;
-using ConsoleShop.Data;
-using static ConsoleShopLibrary.Constants.AllConst;
+using ConsoleShop.Shared.Entities;
+using ConsoleShop.Business.Data;
 
 namespace ConsoleShop.MainForShop
 {
@@ -24,7 +22,7 @@ namespace ConsoleShop.MainForShop
             _system = new UserSystem();
         }
 
-        public void OpenMainMenu() //1
+        public void OpenMainMenu()
         {
             while (true)
             {
