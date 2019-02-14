@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleShop.Shared.Entities;
+using System.Data.SqlClient;
+using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
+using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
+using ConsoleShop.Shared.Helpers;
 
 namespace ConsoleShop.Data.Services
 {
-    class CategoryService
+    public class CategoryService
     {
         public string GetAllCategories()
         {
-            using (var connection = new SqlConnection(ConnectionToConsoleShopString))
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
                 string allCategories = "";
@@ -20,7 +25,7 @@ namespace ConsoleShop.Data.Services
                 {
                     while (reader.Read())
                     {
-                        allCategories += reader.GetInt32(0) + "." + reader.GetString(1) + NewLine;
+                        allCategories += reader.GetInt32(0) + "." + reader.GetString(1) + Typography.NewLine;
                     }
                 }
                 return allCategories;

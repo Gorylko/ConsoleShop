@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ConsoleShopLibrary.Constants.AllConst;
+using ConsoleShop.Shared.Entities.Enums;
 
 namespace ConsoleShop.Shared.Entities
 {

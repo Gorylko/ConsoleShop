@@ -32,9 +32,9 @@ namespace ConsoleShop.Business.Data
                             if ((int)reader["CategoryId"] == categoryId)
                        
      {
-                                try //создать отдельный метод создания объектов
+                                try
                                 {
-                                    products.Add(GetProduct(reader));
+                                    products.Add(_productService.GetProduct(reader));
                                 }
                                 catch (SqlException ex)
                                 {

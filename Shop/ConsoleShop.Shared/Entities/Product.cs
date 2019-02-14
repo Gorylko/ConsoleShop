@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleShop.Users;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
-using static ConsoleShopLibrary.Constants.AllConst;
 
 namespace ConsoleShop.Shared.Entities
 {
@@ -47,7 +45,7 @@ namespace ConsoleShop.Shared.Entities
             returnString.AppendLine($"Дата последнего изменения : {this.LastModifiedDate}");
             returnString.AppendLine($"Категория : {this.Category}");
             returnString.AppendLine($"Контакты производителя : ");
-            returnString.AppendLine(this.Author.Role);
+            returnString.AppendLine((this.Author.Role).ToString());
             returnString.AppendLine(this.Author.Login);
             returnString.AppendLine(this.Author.PhoneNumber);
             returnString.AppendLine(this.Author.Email);

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleShop.Users;
 using ConsoleShop.MainForShop;
-using static ConsoleShopLibrary.Constants.AllConst;
+using ConsoleShop.Shared.Constants;
 
 namespace ConsoleShop
 {
@@ -13,7 +12,7 @@ namespace ConsoleShop
     {
         static void Main()
         {
-            Console.ForegroundColor = DefaultColor;
+            Console.ForegroundColor = ColorConstants.DefaultColor;
             var aglyExspress = new Shop();
             aglyExspress.OpenAuthorizationMenu();
         }

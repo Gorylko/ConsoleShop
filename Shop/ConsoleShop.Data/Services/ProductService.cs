@@ -26,7 +26,7 @@ namespace ConsoleShop.Data.Services
                 CreationDate = (DateTime)reader["CreationDate"],
                 LastModifiedDate = (DateTime)reader["LastModifiedDate"],
                 Category = (string)reader["Category"],
-                Author = new User
+                Author = new User //сделать отдельный метод доставания юзера в классе UserService
                 {
                     Login = (string)reader["Login"],
                     Email = (string)reader["Email"],

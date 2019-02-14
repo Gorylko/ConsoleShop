@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Data.SqlClient;
+using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
+using ConsoleShop.Shared.Entities;
+using ConsoleShop.Shared.Entities.Enums;
+using ConsoleShop.Shared.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +19,7 @@ namespace ConsoleShop.Data.Services
             {
                 return null;
             }
-            using (var connection = new SqlConnection(ConnectionToConsoleShopString)) // Почитать как сделать sql command с параметрами
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString)) // Почитать как сделать sql command с параметрами
             {
                 connection.Open();
                 var command = new SqlCommand($"SELECT TOP 1 * FROM [User] WHERE [Login] = '{login}' AND [Password] = '{password}'", connection); //соединить с roles
@@ -27,7 +32,7 @@ namespace ConsoleShop.Data.Services
                         Password = (string)reader["Password"],
                         Email = (string)reader["Email"],
                         PhoneNumber = (string)reader["PhoneNumber"],
-                        Role = ConvertToRoleType((int)reader["RoleId"])
+                        Role = RoleHelper.ConvertToRoleType((int)reader["RoleId"])
                     };
                 }
                 else
@@ -36,9 +41,10 @@ namespace ConsoleShop.Data.Services
                 }
             }
         }
+
         public User GetNewUser(string login, string password, string email, string phonenumber)
         {
-            using (var connection = new SqlConnection(ConnectionToConsoleShopString))
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
                 try
@@ -53,16 +59,11 @@ namespace ConsoleShop.Data.Services
                         Role = RoleType.User
                     };
                 }
-                catch (Exception)
+                catch (SqlException)
                 {
                     throw new Exception("Логин или почта уже заняты, попробуйте что-нибудь поменять :)");
                 }
             }
         }
-        private RoleType ConvertToRoleType(int roleid)
-        {
-            return (RoleType)roleid;
-        }
-
     }
 }

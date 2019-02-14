@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 
-namespace ConsoleShop.MainForShop
+namespace ConsoleShop.Business.Data
 {
-    public class UserSystem
+    class UserData
     {
-
     }
 }

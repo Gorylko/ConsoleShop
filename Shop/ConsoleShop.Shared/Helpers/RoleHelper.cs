@@ -9,5 +9,10 @@ namespace ConsoleShop.Shared.Helpers
         {
             return (RoleType)Enum.Parse(typeof(RoleType), roleName);
         }
+
+        public static RoleType ConvertToRoleType(int roleid)
+        {
+            return (RoleType)roleid;
+        }
     }
 }
