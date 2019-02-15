@@ -17,12 +17,13 @@ namespace ConsoleShop.MainForShop
         public User MainUser { get; set; }
         private ProductData _dataTool;
         private CategoryData _categoryTool;
-        private UserSystem _system;
+        private UserData _userdata;
 
         public Shop()
         {
             _dataTool = new ProductData();
-            _system = new UserSystem();
+            _userdata = new UserData();
+            _categoryTool = new CategoryData();
         }
 
         public void OpenMainMenu()
@@ -31,7 +32,7 @@ namespace ConsoleShop.MainForShop
             {
                 Console.Clear();
                 Console.Write(GetMainMenuString());
-                switch (Console.ReadLine().Replace(" ", string.Empty))
+                switch (ReadCurrentLine())
                 {
                     case "1":
                         OpenCategorySelectionMenu();
@@ -58,34 +59,41 @@ namespace ConsoleShop.MainForShop
 
         private string GetMainMenuString()
         {
-            string mainmenustring = "Напишите цифру нужного раздела:" + Typography.NewLine + "1.Воспользоваться навигацией" + Typography.NewLine + "2.Открыть поиск" + Typography.NewLine;
-            if (MainUser == null)
-            {
-                return mainmenustring + Typography.NewLine + "Чтобы вернуться назад - пиши /r" + Typography.NewLine;
-            }
+            StringBuilder menuString = new StringBuilder();
+            menuString.AppendLine("Напишите цифру нужного раздела:");
+            menuString.AppendLine("1.Воспользоваться навигацией");
+            menuString.AppendLine("2.Открыть поиск");
 
             if (MainUser.HasRole(RoleType.User))
             {
-                mainmenustring += "3.Посмотреть список своих товаров" + Typography.NewLine + "4.Открыть свой профиль";
+                menuString.AppendLine("3.Посмотреть список своих товаров");
+                menuString.AppendLine("4.Открыть свой профиль");
             }
 
             if (MainUser.HasRole(RoleType.Moderator))
             {
-                mainmenustring += "5.(!!!)Редактировать товары";
+                menuString.AppendLine("5.(!!!)Редактировать товары");
             }
 
             if (MainUser.HasRole(RoleType.Administrator))
             {
-                mainmenustring += "6.(!!!)Редактировать пользователей";
+                menuString.AppendLine("6.(!!!)Редактировать пользователей");
             }
 
-            return mainmenustring + Typography.NewLine + "Чтобы вернуться назад - пиши /r" + Typography.NewLine;
+            menuString.AppendLine("Чтобы вернуться назад - пиши /r");
+            return menuString.ToString();
         }
         private string GetSearchMenuString()
         {
-            return "Выберите по какому полю вы хотите начать поиск :" + Typography.NewLineX2 +
-                "1.Имя" + Typography.NewLine + "2.Описание" + Typography.NewLine + "3.Место производства" + Typography.NewLine +
-                "4.Дата производства" + Typography.NewLine + "5.Логин пользователя" + Typography.NewLineX2 + "6.Назад";
+            StringBuilder menuString = new StringBuilder();
+            menuString.AppendLine("Выберите по какому полю вы хотите начать поиск :");
+            menuString.AppendLine("1.Имя");
+            menuString.AppendLine("2.Описание");
+            menuString.AppendLine("3.Место производства");
+            menuString.AppendLine("4.Дата производства");
+            menuString.AppendLine("5.Логин пользователя");
+            menuString.AppendLine("6.Назад");
+            return menuString.ToString();
         }
 
         private void OpenCategorySelectionMenu()
@@ -95,12 +103,12 @@ namespace ConsoleShop.MainForShop
                 Console.Clear();
                 Console.WriteLine("Выберите категорию : ");
                 Console.WriteLine(_categoryTool.GetCategoryString());
-                OpenASpecificCategory(Console.ReadLine().Replace(" ", string.Empty));
+                OpenASpecificCategory(ReadCurrentLine());
             }
         }
         private void OpenASpecificCategory(string key)
         {
-            if(!int.TryParse(key, out int output)) //прогуглить что это такое
+            if (!int.TryParse(key, out int output)) //прогуглить что это такое
             {
                 return;
             }
@@ -119,7 +127,7 @@ namespace ConsoleShop.MainForShop
             {
                 Console.Clear();
                 Console.WriteLine(GetSearchMenuString());
-                switch (Console.ReadLine().Replace(" ", string.Empty))
+                switch (ReadCurrentLine())
                 {
                     case "1":
                         OpenSearchMenu("ProductName");
@@ -147,7 +155,7 @@ namespace ConsoleShop.MainForShop
         {
             Console.Clear();
             Console.WriteLine("Введите свой запрос :");
-            List<Product> products = _dataTool.GetSearchList(searchParameter, Console.ReadLine().Replace(" ", string.Empty));
+            List<Product> products = _dataTool.GetSearchList(searchParameter, ReadCurrentLine());
             foreach (Product product in products)
             {
                 Console.WriteLine(product.GetInfoAboutProduct());
@@ -163,7 +171,12 @@ namespace ConsoleShop.MainForShop
         #region Authorization
         public string GetAuthorizationMenuString()
         {
-            return "Авторизация - пиши /a" + Typography.NewLine + "Нету аккаунта? - пиши /r" + Typography.NewLine + "Войти как гость /g" + Typography.NewLine + "Выйти - пиши /e" + Typography.NewLine;
+            StringBuilder menuString = new StringBuilder();
+            menuString.AppendLine("Авторизация - пиши /a");
+            menuString.AppendLine("Нету аккаунта? - пиши /r");
+            menuString.AppendLine("Войти как гость - пиши /g");
+            menuString.AppendLine("Выйти - пиши /e");
+            return menuString.ToString();
         }
 
         public void OpenAuthorizationMenu()
@@ -195,8 +208,39 @@ namespace ConsoleShop.MainForShop
         {
             while (true)
             {
-                Console.WriteLine("Введите логин ");
+                Console.Clear();
+                Console.WriteLine("1.Зарегистрироваться" + Typography.NewLine + "2.Назад");
+                switch (ReadCurrentLine())
+                {
+                    case "1":
+
+                        try
+                        {
+                            Console.WriteLine("Введите логин : ");
+                            string login = Console.ReadLine();
+                            Console.WriteLine("Введите пароль : ");
+                            string password = Console.ReadLine();
+                            Console.WriteLine("Введите почту");
+                            string email = Console.ReadLine();
+                            Console.WriteLine("Введите ваш телефон");
+                            string phonenumber = Console.ReadLine();
+
+                            MainUser = _userdata.GetRegistratedUser(login, password, email, phonenumber);
+                            Console.WriteLine("Регистрация завершена успешно!");
+                            Console.ReadKey();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.ReadKey(true);
+                        }
+                        break;
+                    case "2":
+                        return;
+                }
+                OpenMainMenu(); //вход в магаз с уже полученным юзером
             }
+
         }
         private void OpenAccountLoginMenu()
         {
@@ -204,17 +248,17 @@ namespace ConsoleShop.MainForShop
             {
                 Console.Clear();
                 Console.WriteLine("1.Авторизироваться" + Typography.NewLine + "2.Назад");
-                switch (Console.ReadLine().Replace(" ", string.Empty))
+                switch (ReadCurrentLine())
                 {
                     case "1":
 
                         try
                         {
                             Console.WriteLine("Введите логин : ");
-                            string password = Console.ReadLine();
-                            Console.WriteLine("Введите пароль : ");
                             string login = Console.ReadLine();
-                            MainUser = _system.GetAuthorizedUser(login, password);
+                            Console.WriteLine("Введите пароль : ");
+                            string password = Console.ReadLine();
+                            MainUser = _userdata.GetAuthorizedUser(login, password);
                             Console.WriteLine("Авторизация завершена успешно!");
                             Console.ReadKey();
                         }
@@ -227,6 +271,7 @@ namespace ConsoleShop.MainForShop
                     case "2":
                         return;
                 }
+                OpenMainMenu(); //вход в магаз с уже полученным юзером
             }
         }
         public void LoginAsGuest()

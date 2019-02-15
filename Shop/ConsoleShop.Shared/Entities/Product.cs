@@ -50,7 +50,7 @@ namespace ConsoleShop.Shared.Entities
             returnString.AppendLine(this.Author.PhoneNumber);
             returnString.AppendLine(this.Author.Email);
             returnString.AppendLine($"Местоположение товара : {this.LocationOfProduct}");
-            returnString.AppendLine($"Состояние : {this.State}");
+            returnString.AppendLine($"Состояние : {this.State}{Typography.NewLineX2}");
             return returnString.ToString();
         }
 

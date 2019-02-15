@@ -11,18 +11,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop.Data.Services
 {
-    class UserService
+    public class UserService
     {
-        public User GetAuthorizedUser(string login, string password)
+        public User GetAuthorizedUserFromDb(string login, string password)
         {
-            if(string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 return null;
             }
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString)) // Почитать как сделать sql command с параметрами
             {
                 connection.Open();
-                var command = new SqlCommand($"SELECT TOP 1 * FROM [User] WHERE [Login] = '{login}' AND [Password] = '{password}'", connection); //соединить с roles
+                var command = new SqlCommand($"SELECT TOP 1 * FROM [User] WHERE [Login] = @login AND [Password] = @password", connection); //соединить с roles
+                command.Parameters.AddWithValue("@login", login);
+                command.Parameters.AddWithValue("@password", password);
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
@@ -42,14 +44,19 @@ namespace ConsoleShop.Data.Services
             }
         }
 
-        public User GetNewUser(string login, string password, string email, string phonenumber)
+        public User GetRegistratedUserFromDb(string login, string password, string email, string phonenumber)
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
                 try
                 {
-                    var command = new SqlCommand($"INSERT INTO User (RoleId, Login, Password, Email, PhoneNumber) VALUES (3, {login}, {password}, {email}, {phonenumber})", connection);
+                    var command = new SqlCommand($"INSERT INTO [User] (RoleId, Login, Password, Email, PhoneNumber) VALUES (3, @login, @password, @email, @phonenumber)", connection);
+                    command.Parameters.AddWithValue("@login", login);
+                    command.Parameters.AddWithValue("@password", password);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@phonenumber", phonenumber);
+                    command.ExecuteNonQuery();
                     return new User
                     {
                         Login = login,

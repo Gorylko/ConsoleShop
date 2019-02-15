@@ -12,6 +12,10 @@ C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\Consol
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.exe.config
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.exe
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.pdb
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShopLibrary.dll
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShopLibrary.pdb
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\obj\Debug\ConsoleShop.csproj.CopyComplete
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Business.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Shared.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Data.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Business.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Shared.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Data.pdb
