@@ -49,6 +49,7 @@ namespace ConsoleShop.MainForShop
                     case "6":
                         break;
                     case "/r":
+                        MainUser = null;
                         return;
                     default:
                         break;
@@ -63,6 +64,12 @@ namespace ConsoleShop.MainForShop
             menuString.AppendLine("Напишите цифру нужного раздела:");
             menuString.AppendLine("1.Воспользоваться навигацией");
             menuString.AppendLine("2.Открыть поиск");
+
+            if(MainUser == null)
+            {
+                menuString.AppendLine("Чтобы вернуться назад - пиши /r");
+                return menuString.ToString();
+            }
 
             if (MainUser.HasRole(RoleType.User))
             {
@@ -80,7 +87,7 @@ namespace ConsoleShop.MainForShop
                 menuString.AppendLine("6.(!!!)Редактировать пользователей");
             }
 
-            menuString.AppendLine("Чтобы вернуться назад - пиши /r");
+            menuString.AppendLine("Чтобы выйти из аккаунта - пиши /r");
             return menuString.ToString();
         }
         private string GetSearchMenuString()
@@ -103,7 +110,14 @@ namespace ConsoleShop.MainForShop
                 Console.Clear();
                 Console.WriteLine("Выберите категорию : ");
                 Console.WriteLine(_categoryTool.GetCategoryString());
-                OpenASpecificCategory(ReadCurrentLine());
+                string key = ReadCurrentLine();
+
+                if(key == "/r")
+                {
+                    return;
+                }
+
+                OpenASpecificCategory(key);
             }
         }
         private void OpenASpecificCategory(string key)
@@ -179,7 +193,7 @@ namespace ConsoleShop.MainForShop
             return menuString.ToString();
         }
 
-        public void OpenAuthorizationMenu()
+        public void OpenFirstMenu()
         {
             while (true)
             {
@@ -244,35 +258,23 @@ namespace ConsoleShop.MainForShop
         }
         private void OpenAccountLoginMenu()
         {
-            while (true)
-            {
                 Console.Clear();
-                Console.WriteLine("1.Авторизироваться" + Typography.NewLine + "2.Назад");
-                switch (ReadCurrentLine())
+                try
                 {
-                    case "1":
-
-                        try
-                        {
-                            Console.WriteLine("Введите логин : ");
-                            string login = Console.ReadLine();
-                            Console.WriteLine("Введите пароль : ");
-                            string password = Console.ReadLine();
-                            MainUser = _userdata.GetAuthorizedUser(login, password);
-                            Console.WriteLine("Авторизация завершена успешно!");
-                            Console.ReadKey();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.Message);
-                            Console.ReadKey(true);
-                        }
-                        break;
-                    case "2":
-                        return;
+                    Console.WriteLine("Введите логин : ");
+                    string login = Console.ReadLine();
+                    Console.WriteLine("Введите пароль : ");
+                    string password = Console.ReadLine();
+                    MainUser = _userdata.GetAuthorizedUser(login, password);
+                    Console.WriteLine("Авторизация завершена успешно!");
+                    Console.ReadKey();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.ReadKey(true);
                 }
                 OpenMainMenu(); //вход в магаз с уже полученным юзером
-            }
         }
         public void LoginAsGuest()
         {

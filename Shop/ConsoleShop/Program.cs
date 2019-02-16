@@ -14,7 +14,7 @@ namespace ConsoleShop
         {
             Console.ForegroundColor = ColorConstants.DefaultColor;
             var aglyExspress = new Shop();
-            aglyExspress.OpenAuthorizationMenu();
+            aglyExspress.OpenFirstMenu();
         }
     }
 }
