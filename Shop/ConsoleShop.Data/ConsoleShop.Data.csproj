@@ -46,6 +46,8 @@
     <Compile Include="Data\CategoryData.cs" />
     <Compile Include="Data\ProductData.cs" />
     <Compile Include="Data\UserData.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleShop.Shared\ConsoleShop.Shared.csproj">
