@@ -9,9 +9,9 @@ using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
 using ConsoleShop.Shared.Helpers;
 
-namespace ConsoleShop.Data.Services
+namespace ConsoleShop.Data.Data
 {
-    public class CategoryService
+    public class CategoryData
     {
         public string GetAllCategories()
         {

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleShop.Shared.Entities;
-using ConsoleShop.Data.Services;
+using ConsoleShop.Data.Data;
 
-namespace ConsoleShop.Business.Data
+namespace ConsoleShop.Business.Services
 {
-    public class UserData
+    public class UserService
     {
-        UserService _servise = new UserService();
+        UserData _servise = new UserData();
 
         public User GetAuthorizedUser(string login, string password)
         {

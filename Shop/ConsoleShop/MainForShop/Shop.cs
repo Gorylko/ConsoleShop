@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ConsoleShop.Shared.Entities;
 using ConsoleShop.Shared.Entities.Enums;
-using ConsoleShop.Business.Data;
+using ConsoleShop.Business.Services;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 
 namespace ConsoleShop.MainForShop
@@ -15,15 +14,15 @@ namespace ConsoleShop.MainForShop
         #region Shop
         private List<Product> Catalog { get; set; }
         public User MainUser { get; set; }
-        private ProductData _dataTool;
-        private CategoryData _categoryTool;
-        private UserData _userdata;
+        private ProductService _dataTool;
+        private CategoryService _categoryTool;
+        private UserService _userdata;
 
         public Shop()
         {
-            _dataTool = new ProductData();
-            _userdata = new UserData();
-            _categoryTool = new CategoryData();
+            _dataTool = new ProductService();
+            _userdata = new UserService();
+            _categoryTool = new CategoryService();
         }
 
         public void OpenMainMenu()
@@ -169,7 +168,7 @@ namespace ConsoleShop.MainForShop
         {
             Console.Clear();
             Console.WriteLine("Введите свой запрос :");
-            List<Product> products = _dataTool.GetSearchList(searchParameter, ReadCurrentLine());
+            IReadOnlyCollection<Product> products = _dataTool.GetSearchList(searchParameter, ReadCurrentLine());
             foreach (Product product in products)
             {
                 Console.WriteLine(product.GetInfoAboutProduct());

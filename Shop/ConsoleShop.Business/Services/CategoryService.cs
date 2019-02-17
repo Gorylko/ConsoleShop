@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleShop.Data.Services;
+using ConsoleShop.Data.Data;
 
-namespace ConsoleShop.Business.Data
+namespace ConsoleShop.Business.Services
 {
-    public class CategoryData
+    public class CategoryService
     {
-        private CategoryService _serviceTool = new CategoryService();
+        private CategoryData _serviceTool = new CategoryData();
         
         public string GetCategoryString()
         {

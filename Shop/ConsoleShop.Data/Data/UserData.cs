@@ -9,17 +9,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop.Data.Services
+namespace ConsoleShop.Data.Data
 {
-    public class UserService
+    public class UserData
     {
+        public User GetUser(SqlDataReader reader)
+        {
+            return new User
+            {
+                Login = (string)reader["Login"],
+                Email = (string)reader["Email"],
+                PhoneNumber = (string)reader["PhoneNumber"],
+                Role = RoleHelper.ConvertToRoleType((string)reader["Role"])
+            };
+        }
+
         public User GetAuthorizedUserFromDb(string login, string password)
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 return null;
             }
-            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString)) // Почитать как сделать sql command с параметрами
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
                 var command = new SqlCommand($"SELECT TOP 1 * FROM [User] WHERE [Login] = @login AND [Password] = @password", connection); //соединить с roles
@@ -28,14 +39,7 @@ namespace ConsoleShop.Data.Services
                 SqlDataReader reader = command.ExecuteReader();
                 if (reader.Read())
                 {
-                    return new User
-                    {
-                        Login = (string)reader["Login"],
-                        Password = (string)reader["Password"],
-                        Email = (string)reader["Email"],
-                        PhoneNumber = (string)reader["PhoneNumber"],
-                        Role = RoleHelper.ConvertToRoleType((int)reader["RoleId"])
-                    };
+                    return GetUser(reader);
                 }
                 else
                 {
