@@ -13,7 +13,7 @@ namespace ConsoleShop.Business.Services
         
         public string GetCategoryString()
         {
-            return _serviceTool.GetAllCategories() + "Чтобы вернуться назад - пиши /r"; 
+            return _serviceTool.GetAllCategoriesString() + "Чтобы вернуться назад - пиши /r"; 
         }
     }
 }

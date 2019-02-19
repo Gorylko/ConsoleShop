@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop.Data.Repositories
+namespace ConsoleShop.Data.Repositories.Interfaces
 {
-    interface IRepository<T>
+    public interface IRepository<T>
     {
         IReadOnlyCollection<T> GetAll();
 

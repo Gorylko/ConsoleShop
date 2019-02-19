@@ -7,13 +7,14 @@ using ConsoleShop.Shared.Entities;
 using System.Data.SqlClient;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
+using ConsoleShop.Data.Repositories.Interfaces;
 using ConsoleShop.Shared.Helpers;
 
 namespace ConsoleShop.Data.Data
 {
     public class CategoryData
     {
-        public string GetAllCategories()
+        public string GetAllCategoriesString()
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
@@ -29,6 +30,45 @@ namespace ConsoleShop.Data.Data
                     }
                 }
                 return allCategories;
+            }
+        }
+
+        public IReadOnlyCollection<string> GetAllCategoties()
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                List<string> allCategories = new List<string>();
+                var command = new SqlCommand("SELECT * FROM Category", connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    allCategories.Add(reader["CategoryName"].ToString());
+                }
+                return allCategories;
+            }
+        }
+
+        public string GetCategoryById(int id)
+        {
+            using (var connection = new SqlConnection("Data Source=LAPTOP-P3338OQH;Initial Catalog=ConsoleShop;Integrated Security=True"))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand($"SELECT TOP 1 * FROM [Category] WHERE [CategoryId] = {id}", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return reader["CategoryName"].ToString();
+            }
+        }
+
+        public void DeleteById(int id)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand($"DELETE [Category] WHERE [CategoryId] = {id}", connection);
+                command.ExecuteNonQuery();
             }
         }
     }

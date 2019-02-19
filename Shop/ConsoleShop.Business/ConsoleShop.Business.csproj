@@ -45,7 +45,6 @@
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryTest\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleShop.Data\ConsoleShop.Data.csproj">

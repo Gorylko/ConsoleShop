@@ -9,7 +9,7 @@ namespace ConsoleShop.Data.Constants
 {
     public class SqlQueryConstants
     {
-        public const string SelectProductInDbString = "USE ConsoleShop" + Typography.NewLine +
+        public const string SelectAllProductInDbString = "USE ConsoleShop" + Typography.NewLine +
         "SELECT Product.*, [Category].[CategoryName] AS [Category], [Location].[LocationName] AS [Location], [ProductState].[State] AS [State], [Role].[RoleName] AS [Role], [User].[Login] AS [Login], [User].[Email] AS [Email], [User].[PhoneNumber] AS [PhoneNumber] " + Typography.NewLine +
         "FROM [Product]" + Typography.NewLine +
         "JOIN [Category] ON [Product].[CategoryId] = [Category].CategoryId" + Typography.NewLine +

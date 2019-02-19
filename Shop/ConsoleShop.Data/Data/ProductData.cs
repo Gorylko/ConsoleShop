@@ -21,7 +21,7 @@ namespace ConsoleShop.Data.Data
             {
                 connection.Open();
                 List<Product> products = new List<Product>();
-                var command = new SqlCommand(SqlConst.SelectProductInDbString, connection);
+                var command = new SqlCommand(SqlConst.SelectAllProductInDbString, connection);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -50,7 +50,7 @@ namespace ConsoleShop.Data.Data
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
-                using (var command = new SqlCommand(SqlConst.SelectProductInDbString, connection))
+                using (var command = new SqlCommand(SqlConst.SelectAllProductInDbString, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -79,7 +79,7 @@ namespace ConsoleShop.Data.Data
             }
         }
 
-        private Product GetProduct(SqlDataReader reader)
+        public Product GetProduct(SqlDataReader reader)
         {
             return new Product
             {
@@ -95,5 +95,46 @@ namespace ConsoleShop.Data.Data
                 State = (string)reader["State"]
             };
         }
+
+        public Product GetProductById(int id)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                List<Product> products = new List<Product>();
+                string query = SqlConst.SelectAllProductInDbString + Typography.NewLine + $"WHERE [Id] = {id}";
+                var command = new SqlCommand(SqlConst.SelectAllProductInDbString, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                reader.Read();
+                return GetProduct(reader);
+            }
+        }
+
+        public IReadOnlyCollection<Product> GetAllProducts()
+        {
+            List<Product> returnProducts = new List<Product>();
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                List<Product> products = new List<Product>();
+                var command = new SqlCommand(SqlConst.SelectAllProductInDbString, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        returnProducts.Add(GetProduct(reader));
+                    }
+                    catch (SqlException)
+                    {
+
+                    }
+                }
+                return returnProducts;
+            }
+        }
+
+
     }
 }

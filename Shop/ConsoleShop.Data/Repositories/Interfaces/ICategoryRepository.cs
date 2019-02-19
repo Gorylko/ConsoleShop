@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop.Data.Repositories
+namespace ConsoleShop.Data.Repositories.Interfaces
 {
-    interface ICategoryRepository : IRepository<string>
+    public interface ICategoryRepository : IRepository<string>
     {
         IReadOnlyCollection<string> GetAllCategories();
-        string GetCategory(int categoryId);
+
+        string GetCategoryById(int categoryId);
     }
 }
