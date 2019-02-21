@@ -10,16 +10,16 @@ namespace ConsoleShop.Business.Services
 {
     public class UserService
     {
-        UserData _servise = new UserData();
+        UserData _userData = new UserData();
 
         public User GetAuthorizedUser(string login, string password)
         {
-            return _servise.GetAuthorizedUserFromDb(login, password);
+            return _userData.GetAuthorizedUserFromDb(login, password);
         }
 
         public User GetRegistratedUser(string login, string password, string email, string phonenumber)
         {
-            return _servise.GetRegistratedUserFromDb(login, password, email, phonenumber);
+            return _userData.GetRegistratedUserFromDb(login, password, email, phonenumber);
         }
 
     }

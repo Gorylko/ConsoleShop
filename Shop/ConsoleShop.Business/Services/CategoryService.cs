@@ -9,11 +9,11 @@ namespace ConsoleShop.Business.Services
 {
     public class CategoryService
     {
-        private CategoryData _serviceTool = new CategoryData();
+        private CategoryData _categoryData = new CategoryData();
         
         public string GetCategoryString()
         {
-            return _serviceTool.GetAllCategoriesString() + "Чтобы вернуться назад - пиши /r"; 
+            return _categoryData.GetAllCategoriesString() + "Чтобы вернуться назад - пиши /r"; 
         }
     }
 }

@@ -14,16 +14,16 @@ namespace ConsoleShop.Business.Services
 {
     public class ProductService
     {
-        private ProductData _productService = new ProductData();
+        private ProductData _productData = new ProductData();
 
         public IReadOnlyCollection<Product> GetSearchList(string searchParameter, string searchQuery)
         {
-            return _productService.GetSearchListFromDb(searchParameter, searchQuery);
+            return _productData.GetSearchListFromDb(searchParameter, searchQuery);
         }
 
         public IReadOnlyCollection<Product> GetProductsByCategoryId(int categoryId)
         {
-            return _productService.GetProductsByCategoryIdFromDb(categoryId);
+            return _productData.GetProductsByCategoryIdFromDb(categoryId);
         }
 
     }
