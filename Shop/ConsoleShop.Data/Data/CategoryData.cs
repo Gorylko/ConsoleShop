@@ -71,5 +71,15 @@ namespace ConsoleShop.Data.Data
                 command.ExecuteNonQuery();
             }
         }
+
+        public void Save(string category)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand($"INSERT INTO [Category] (CategoryName) VALUES ('{category}')", connection);
+                command.ExecuteNonQuery();
+            }
+        }
     }
 }

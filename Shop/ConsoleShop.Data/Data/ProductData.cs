@@ -135,6 +135,16 @@ namespace ConsoleShop.Data.Data
             }
         }
 
+        public void DeleteById(int id)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand($"DELETE [Product] WHERE [Id] = {id}", connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
 
     }
 }

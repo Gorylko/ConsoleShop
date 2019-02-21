@@ -18,6 +18,19 @@ namespace ConsoleShop.Data.Repositories
             return _productData.GetAllProducts();
         }
 
-        public 
+        public void Delete(int id)
+        {
+            _productData.DeleteById(id);
+        }
+        
+        public Product GetById(int id)
+        {
+            return _productData.GetProductById(id);
+        }
+
+        public void Save(Product product)
+        {
+
+        }
     }
 }

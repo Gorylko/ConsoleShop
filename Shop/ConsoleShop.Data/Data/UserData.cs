@@ -33,7 +33,7 @@ namespace ConsoleShop.Data.Data
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
-                var command = new SqlCommand($"SELECT TOP 1 * FROM [User] WHERE [Login] = @login AND [Password] = @password", connection); //соединить с roles
+                var command = new SqlCommand("SELECT TOP 1 * FROM [User] WHERE [Login] = @login AND [Password] = @password", connection); //соединить с roles
                 command.Parameters.AddWithValue("@login", login);
                 command.Parameters.AddWithValue("@password", password);
                 SqlDataReader reader = command.ExecuteReader();
