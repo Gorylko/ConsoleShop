@@ -7,23 +7,24 @@ using System.Data.SqlClient;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
 using ConsoleShop.Shared.Entities;
-using ConsoleShop.Data.Data;
+using ConsoleShop.Data.Repositories.Interfaces;
+using ConsoleShop.Data.Repositories;
 using ConsoleShop.Shared.Helpers;
 
 namespace ConsoleShop.Business.Services
 {
     public class ProductService
     {
-        private ProductData _productData = new ProductData();
+        private IRepository<Product> _productRepository = new ProductRepository();
 
         public IReadOnlyCollection<Product> GetSearchList(string searchParameter, string searchQuery)
         {
-            return _productData.GetSearchListFromDb(searchParameter, searchQuery);
+            return _productRepository.GetSearchListFromDb(searchParameter, searchQuery);
         }
 
         public IReadOnlyCollection<Product> GetProductsByCategoryId(int categoryId)
         {
-            return _productData.GetProductsByCategoryIdFromDb(categoryId);
+            return _productRepository.GetProductsByCategoryIdFromDb(categoryId);
         }
 
     }

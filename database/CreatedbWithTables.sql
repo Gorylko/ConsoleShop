@@ -3,43 +3,43 @@ GO
 USE [ConsoleShop];
 CREATE TABLE [dbo].[Category]
 (
-	[CategoryId] INT IDENTITY (1,1) NOT NULL,
-   	[CategoryName] NVARCHAR(20) NOT NULL,
+	[Id] INT IDENTITY (1,1) NOT NULL,
+   	[Name] NVARCHAR(20) NOT NULL,
 
- 	PRIMARY KEY CLUSTERED([CategoryId] ASC)
+ 	PRIMARY KEY CLUSTERED([Id] ASC)
 );
 GO
 CREATE TABLE [dbo].[Location]
 (
-	[LocationId] INT IDENTITY(1,1) NOT NULL,
-	[LocationName] NVARCHAR(50) NOT NULL,
-	PRIMARY KEY CLUSTERED([LocationId]ASC)
+	[Id] INT IDENTITY(1,1) NOT NULL,
+	[Name] NVARCHAR(50) NOT NULL,
+	PRIMARY KEY CLUSTERED([Id]ASC)
 );
 GO
 CREATE TABLE [dbo].[ProductState]
 (
-	[StateId]INT IDENTITY(1,1) NOT NULL,
+	[Id]INT IDENTITY(1,1) NOT NULL,
 	[State]NVARCHAR(40) NOT NULL,
-	PRIMARY KEY CLUSTERED([StateId]ASC)
+	PRIMARY KEY CLUSTERED([Id]ASC)
 );
 GO
 CREATE TABLE [dbo].[Role]
 (
-	[RoleId] INT IDENTITY (1,1) NOT NULL,
-	[RoleName] NVARCHAR(20) NOT NULL,
-	PRIMARY KEY CLUSTERED([RoleId] ASC)
+	[Id] INT IDENTITY (1,1) NOT NULL,
+	[Role] NVARCHAR(20) NOT NULL,
+	PRIMARY KEY CLUSTERED([Id] ASC)
 );
 GO
 CREATE TABLE [dbo].[User]
 (
-	[UserId] INT IDENTITY (1,1) NOT NULL,
+	[Id] INT IDENTITY (1,1) NOT NULL,
 	[RoleId] INT NOT NULL,
    	[Login] NVARCHAR(20) NOT NULL,
 	[Password] NVARCHAR(20) NOT NULL,
 	[Email] NVARCHAR(20) NOT NULL,
 	[PhoneNumber] NVARCHAR(15) NULL,
- 	PRIMARY KEY CLUSTERED([UserId] ASC),
-	FOREIGN KEY(RoleId) REFERENCES [dbo].[Role]([RoleId])
+ 	PRIMARY KEY CLUSTERED([Id] ASC),
+	FOREIGN KEY(RoleId) REFERENCES [dbo].[Role]([Id])
 );
 GO
 CREATE TABLE [dbo].[Product]
@@ -55,9 +55,9 @@ CREATE TABLE [dbo].[Product]
 	[CreationDate]DATETIME NOT NULL,
 	[LastModifiedDate]DATETIME NOT NULL,
 	PRIMARY KEY CLUSTERED([Id]ASC),
-	FOREIGN KEY([CategoryId]) REFERENCES [dbo].[Category]([CategoryId]),
-	FOREIGN KEY([LocationId]) REFERENCES [dbo].[Location]([LocationId]),
-	FOREIGN KEY([StateId]) REFERENCES [dbo].[ProductState]([StateId]),
-	FOREIGN KEY([UserId]) REFERENCES [dbo].[User]([UserId])
+	FOREIGN KEY([CategoryId]) REFERENCES [dbo].[Category]([Id]),
+	FOREIGN KEY([LocationId]) REFERENCES [dbo].[Location]([Id]),
+	FOREIGN KEY([StateId]) REFERENCES [dbo].[ProductState]([Id]),
+	FOREIGN KEY([UserId]) REFERENCES [dbo].[User]([Id])
 );
 GO
