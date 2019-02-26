@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop.Data.Data
+namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
-    public class UserData
+    public class UserContext
     {
         public User GetUser(SqlDataReader reader)
         {

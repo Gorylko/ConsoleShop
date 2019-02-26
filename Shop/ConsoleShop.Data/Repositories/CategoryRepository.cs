@@ -7,31 +7,37 @@ using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleShop.Data.DataContext.Interfaces;
 
 namespace ConsoleShop.Data.Repositories
 {
     class CategoryRepository : IRepository<string>
     {
-        CategoryData _categoryData = new CategoryData();
+        ICategoryContext _categoryContext;
+
+        public CategoryRepository(ICategoryContext categoryContext)
+        {
+            this._categoryContext = categoryContext;
+        }
 
         public IReadOnlyCollection<string> GetAll()
         {
-            return _categoryData.GetAllCategoties();
+            return _categoryContext.GetAll();
         }
 
         public string GetById(int id)
         {
-            return _categoryData.GetCategoryById(id);
+            return _categoryContext.GetCategoryById(id);
         }
 
         public void Delete(int id)
         {
-            _categoryData.DeleteById(id);
+            _categoryContext.DeleteById(id);
         }
 
         public void Save(string category)
         {
-            _categoryData.Save(category);
+            _categoryContext.Save(category);
         }
     }
 }

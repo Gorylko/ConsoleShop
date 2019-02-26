@@ -7,12 +7,12 @@ using ConsoleShop.Shared.Entities;
 using System.Data.SqlClient;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
-using ConsoleShop.Data.Repositories.Interfaces;
+using ConsoleShop.Data.DataContext.Interfaces;
 using ConsoleShop.Shared.Helpers;
 
-namespace ConsoleShop.Data.Data
+namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
-    public class CategoryData
+    public class CategoryContext : ICategoryContext
     {
         public string GetAllCategoriesString()
         {
@@ -33,7 +33,7 @@ namespace ConsoleShop.Data.Data
             }
         }
 
-        public IReadOnlyCollection<string> GetAllCategoties()
+        public IReadOnlyCollection<string> GetAll()
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
@@ -50,7 +50,7 @@ namespace ConsoleShop.Data.Data
             }
         }
 
-        public string GetCategoryById(int id)
+        public string GetById(int id)
         {
             using (var connection = new SqlConnection("Data Source=LAPTOP-P3338OQH;Initial Catalog=ConsoleShop;Integrated Security=True"))
             {

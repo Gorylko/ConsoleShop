@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop.Data.DataContext.Interfaces
 {
-    interface ICategoryContext
+    interface ICategoryContext : IDataContext<string>
     {
     }
 }

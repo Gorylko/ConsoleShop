@@ -5,15 +5,16 @@ using ConsoleShop.Shared.Entities;
 using System.Data.SqlClient;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
+using ConsoleShop.Data.DataContext.Interfaces;
 using ConsoleShop.Shared.Helpers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleShop.Data.Data
+namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
-    public class ProductData
+    public class ProductContext : IProductContext
     {
-        UserData _userdata = new UserData();
+        UserContext _userdata = new UserContext();
 
         public List<Product> GetSearchListFromDb(string searchParameter, string searchQuery)
         {
@@ -44,7 +45,7 @@ namespace ConsoleShop.Data.Data
             }
         }
 
-        public IReadOnlyCollection<Product> GetProductsByCategoryIdFromDb(int categoryId)
+        public IReadOnlyCollection<Product> GetProductsByCategoryId(int categoryId)
         {
             List<Product> products = new List<Product>();
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
@@ -96,7 +97,7 @@ namespace ConsoleShop.Data.Data
             };
         }
 
-        public Product GetProductById(int id)
+        public Product GetById(int id)
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
@@ -111,7 +112,7 @@ namespace ConsoleShop.Data.Data
             }
         }
 
-        public IReadOnlyCollection<Product> GetAllProducts()
+        public IReadOnlyCollection<Product> GetAll()
         {
             List<Product> returnProducts = new List<Product>();
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))

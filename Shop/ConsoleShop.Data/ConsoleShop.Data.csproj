@@ -44,11 +44,12 @@
     <Compile Include="Constants\SqlQueryConstants.cs" />
     <Compile Include="DataContext\Interfaces\ICategoryContext.cs" />
     <Compile Include="DataContext\Interfaces\IDataContext.cs" />
+    <Compile Include="DataContext\Interfaces\IUserContext.cs" />
     <Compile Include="DataContext\Interfaces\IProductContext.cs" />
+    <Compile Include="DataContext\Realization\MsSql\CategoryContext.cs" />
+    <Compile Include="DataContext\Realization\MsSql\ProductContext.cs" />
+    <Compile Include="DataContext\Realization\MsSql\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Data\CategoryData.cs" />
-    <Compile Include="Data\ProductData.cs" />
-    <Compile Include="Data\UserData.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />

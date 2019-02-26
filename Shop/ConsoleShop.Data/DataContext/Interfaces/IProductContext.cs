@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop.Data.DataContext.Interfaces
 {
-    public interface IProductContext
+    public interface IProductContext : IDataContext<Product>
     {
          IReadOnlyCollection<Product> GetByCategoryId(int id);
 
