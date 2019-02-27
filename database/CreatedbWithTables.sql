@@ -16,17 +16,17 @@ CREATE TABLE [dbo].[Location]
 	PRIMARY KEY CLUSTERED([Id]ASC)
 );
 GO
-CREATE TABLE [dbo].[ProductState]
+CREATE TABLE [dbo].[State]
 (
 	[Id]INT IDENTITY(1,1) NOT NULL,
-	[State]NVARCHAR(40) NOT NULL,
+	[Name]NVARCHAR(40) NOT NULL,
 	PRIMARY KEY CLUSTERED([Id]ASC)
 );
 GO
 CREATE TABLE [dbo].[Role]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
-	[Role] NVARCHAR(20) NOT NULL,
+	[Name] NVARCHAR(20) NOT NULL,
 	PRIMARY KEY CLUSTERED([Id] ASC)
 );
 GO
@@ -49,7 +49,7 @@ CREATE TABLE [dbo].[Product]
 	[CategoryId]INT NOT NULL,
 	[LocationId]INT NOT NULL,
 	[StateId]INT NOT NULL,
-	[ProductName]NVARCHAR(MAX) NOT NULL,
+	[Name]NVARCHAR(MAX) NOT NULL,
 	[Description]NVARCHAR(MAX) NOT NULL,
 	[Price]DECIMAL NOT NULL,
 	[CreationDate]DATETIME NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE [dbo].[Product]
 	PRIMARY KEY CLUSTERED([Id]ASC),
 	FOREIGN KEY([CategoryId]) REFERENCES [dbo].[Category]([Id]),
 	FOREIGN KEY([LocationId]) REFERENCES [dbo].[Location]([Id]),
-	FOREIGN KEY([StateId]) REFERENCES [dbo].[ProductState]([Id]),
+	FOREIGN KEY([StateId]) REFERENCES [dbo].[State]([Id]),
 	FOREIGN KEY([UserId]) REFERENCES [dbo].[User]([Id])
 );
 GO

@@ -10,13 +10,14 @@ using ConsoleShop.Shared.Entities;
 using ConsoleShop.Data.Repositories.Interfaces;
 using ConsoleShop.Data.Repositories;
 using ConsoleShop.Data.DataContext.Realization.MsSql;
+using ConsoleShop.Data.DataContext.Interfaces;
 using ConsoleShop.Shared.Helpers;
 
 namespace ConsoleShop.Business.Services
 {
     public class ProductService
     {
-        private IProductRepository _productRepository = new ProductRepository(new ProductContext());
+        private ProductRepository _productRepository = new ProductRepository(new ProductContext()); //Тут указывается, какую бд использовать в передаваемых конструктору хернях (пока реализованно онли MsSql)
 
         public IReadOnlyCollection<Product> GetSearchList(string searchParameter, string searchQuery)
         {

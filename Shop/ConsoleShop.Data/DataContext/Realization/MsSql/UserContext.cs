@@ -1,17 +1,17 @@
 ﻿using System;
-using System.Data.SqlClient;
-using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
-using ConsoleShop.Shared.Entities;
-using ConsoleShop.Shared.Entities.Enums;
-using ConsoleShop.Shared.Helpers;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleShop.Shared.Entities;
+using System.Data.SqlClient;
+using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
+using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
+using ConsoleShop.Data.DataContext.Interfaces;
+using ConsoleShop.Shared.Helpers;
+using ConsoleShop.Shared.Entities.Enums;
 
 namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
-    public class UserContext
+    public class UserContext : IUserContext
     {
         public User GetUser(SqlDataReader reader)
         {
@@ -24,7 +24,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
             };
         }
 
-        public User GetAuthorizedUserFromDb(string login, string password)
+        public User GetAuthorizedUser(string login, string password)
         {
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
@@ -43,12 +43,12 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 }
                 else
                 {
-                    throw new Exception("Неверный логин или пароль"); //создать свой класс исключений
+                    throw new Exception("Неверный логин или пароль");
                 }
             }
         }
 
-        public User GetRegistratedUserFromDb(string login, string password, string email, string phonenumber)
+        public User GetRegistratedUser(string login, string password, string email, string phonenumber)
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
@@ -74,6 +74,60 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 {
                     throw new Exception("Логин или почта уже заняты, попробуйте что-нибудь поменять :)");
                 }
+            }
+        }
+
+        public IReadOnlyCollection<User> GetAll()
+        {
+            List<User> returnList = new List<User>();
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand("SELECT * FROM [User]", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        returnList.Add(GetUser(reader));
+                    }
+                    catch(SqlException) { }
+                }
+                return returnList;
+            }
+        }
+
+        public User GetById(int id)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                List<User> products = new List<User>();
+                string query = SqlConst.SelectAllProductInDbString + Typography.NewLine + $"WHERE [Id] = {id}";
+                var command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return GetUser(reader);
+            }
+        }
+
+        public void DeleteById(int id)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand($"DELETE [User] WHERE [Id] = {id}", connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void Save(User user)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand($"INSERT INTO [dbo].[User]([Login],[RoleId],[Password],[Email],[PhoneNumber]) VALUES('{user.Login}',{(int)user.Role},'{user.Password}','{user.Email}','{user.PhoneNumber}')", connection);
+                command.ExecuteNonQuery();
             }
         }
     }

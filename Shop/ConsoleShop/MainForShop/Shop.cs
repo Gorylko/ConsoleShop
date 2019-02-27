@@ -18,7 +18,7 @@ namespace ConsoleShop.MainForShop
         private CategoryService _categoryTool;
         private UserService _userdata;
 
-        public Shop()
+        public Shop() 
         {
             _dataTool = new ProductService();
             _userdata = new UserService();

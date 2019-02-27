@@ -87,7 +87,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
             return new Product
             {
                 Id = (int)reader["Id"],
-                Name = (string)reader["ProductName"],
+                Name = (string)reader["Name"],
                 Description = (string)reader["Description"],
                 Price = (decimal)reader["Price"],
                 CreationDate = (DateTime)reader["CreationDate"],
@@ -106,7 +106,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 connection.Open();
                 List<Product> products = new List<Product>();
                 string query = SqlConst.SelectAllProductInDbString + Typography.NewLine + $"WHERE [Id] = {id}";
-                var command = new SqlCommand(SqlConst.SelectAllProductInDbString, connection);
+                var command = new SqlCommand(query, connection);
                 SqlDataReader reader = command.ExecuteReader();
 
                 reader.Read();

@@ -10,13 +10,18 @@ using ConsoleShop.Data.DataContext.Interfaces;
 
 namespace ConsoleShop.Data.Repositories
 {
-    class CategoryRepository : IRepository<string>
+    public class CategoryRepository : IRepository<string>
     {
         ICategoryContext _categoryContext;
 
         public CategoryRepository(ICategoryContext categoryContext)
         {
             this._categoryContext = categoryContext;
+        }
+
+        public string GetAllString()
+        {
+            return _categoryContext.GetAllString();
         }
 
         public IReadOnlyCollection<string> GetAll()
@@ -29,7 +34,7 @@ namespace ConsoleShop.Data.Repositories
             return _categoryContext.GetById(id);
         }
 
-        public void Delete(int id)
+        public void DeleteById(int id)
         {
             _categoryContext.DeleteById(id);
         }

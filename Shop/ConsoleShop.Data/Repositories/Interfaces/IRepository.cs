@@ -14,6 +14,6 @@ namespace ConsoleShop.Data.Repositories.Interfaces
 
         void Save(T obj);
 
-        void Delete(int id);
+        void DeleteById(int id);
     }
 }

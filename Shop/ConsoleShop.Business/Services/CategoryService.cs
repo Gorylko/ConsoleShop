@@ -15,7 +15,7 @@ namespace ConsoleShop.Business.Services
         
         public string GetCategoryString()
         {
-            return _categoryRepository.GetAllCategoriesString() + "Чтобы вернуться назад - пиши /r"; 
+            return _categoryRepository.GetAllString() + "Чтобы вернуться назад - пиши /r"; 
         }
     }
 }

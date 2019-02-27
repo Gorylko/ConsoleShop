@@ -14,7 +14,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
     public class CategoryContext : ICategoryContext
     {
-        public string GetAllCategoriesString()
+        public string GetAllString()
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {

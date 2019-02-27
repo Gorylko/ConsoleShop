@@ -12,19 +12,19 @@ namespace ConsoleShop.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private IProductContext _productContext;
-
         public ProductRepository(IProductContext productContext)
         {
             this._productContext = productContext;
         }
+
+        private IProductContext _productContext;
 
         public IReadOnlyCollection<Product> GetAll()
         {
             return _productContext.GetAll();
         }
 
-        public void Delete(int id)
+        public void DeleteById(int id)
         {
             _productContext.DeleteById(id);
         }
@@ -46,7 +46,7 @@ namespace ConsoleShop.Data.Repositories
 
         public void Save(Product product)
         {
-
+            //ы
         }
     }
 }

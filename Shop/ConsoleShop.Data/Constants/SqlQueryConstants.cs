@@ -10,13 +10,13 @@ namespace ConsoleShop.Data.Constants
     public class SqlQueryConstants
     {
         public const string SelectAllProductInDbString = "USE ConsoleShop" + Typography.NewLine +
-        "SELECT Product.*, [Category].[CategoryName] AS [Category], [Location].[LocationName] AS [Location], [ProductState].[State] AS [State], [Role].[RoleName] AS [Role], [User].[Login] AS [Login], [User].[Email] AS [Email], [User].[PhoneNumber] AS [PhoneNumber] " + Typography.NewLine +
+        "SELECT Product.*, [Category].[Name] AS [Category], [Location].[Name] AS [Location], [State].[Name] AS [State], [Role].[Name] AS [Role], [User].[Login] AS [Login], [User].[Email] AS [Email], [User].[PhoneNumber] AS [PhoneNumber] " + Typography.NewLine +
         "FROM [Product]" + Typography.NewLine +
-        "JOIN [Category] ON [Product].[CategoryId] = [Category].CategoryId" + Typography.NewLine +
-        "JOIN [Location] ON [Product].[LocationId] = [Location].LocationId" + Typography.NewLine +
-        "JOIN [ProductState] ON [Product].[StateId] = [ProductState].StateId" + Typography.NewLine +
-        "JOIN [User] ON [Product].[UserId] = [User].[UserId]" + Typography.NewLine +
-        "JOIN [Role] ON [User].[RoleId] = [Role].[RoleId]";
+        "JOIN [Category] ON [Product].[CategoryId] = [Category].Id" + Typography.NewLine +
+        "JOIN [Location] ON [Product].[LocationId] = [Location].Id" + Typography.NewLine +
+        "JOIN [State] ON [Product].[StateId] = [State].Id" + Typography.NewLine +
+        "JOIN [User] ON [Product].[UserId] = [User].[Id]" + Typography.NewLine +
+        "JOIN [Role] ON [User].[RoleId] = [Role].[Id]";
 
         public const string ConnectionToConsoleShopString = "Data Source=LAPTOP-P3338OQH;Initial Catalog=ConsoleShop;Integrated Security=True";
 

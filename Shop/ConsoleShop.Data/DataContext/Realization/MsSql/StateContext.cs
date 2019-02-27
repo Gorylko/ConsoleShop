@@ -19,7 +19,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
                 connection.Open();
-                var command = new SqlCommand($"SELECT * FROM [ProductState] WHERE [State] = '{name}'", connection);
+                var command = new SqlCommand($"SELECT * FROM [State] WHERE [Name] = '{name}'", connection);
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
                 return (int)reader["State"];
