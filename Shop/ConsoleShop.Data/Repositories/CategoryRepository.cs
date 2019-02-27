@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ConsoleShop.Data.Data;
 using ConsoleShop.Data.Repositories.Interfaces;
 using System.Data.SqlClient;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
@@ -27,7 +26,7 @@ namespace ConsoleShop.Data.Repositories
 
         public string GetById(int id)
         {
-            return _categoryContext.GetCategoryById(id);
+            return _categoryContext.GetById(id);
         }
 
         public void Delete(int id)

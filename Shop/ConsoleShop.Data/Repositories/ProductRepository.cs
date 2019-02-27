@@ -10,7 +10,7 @@ using ConsoleShop.Data.Repositories.Interfaces;
 
 namespace ConsoleShop.Data.Repositories
 {
-    public class ProductRepository : IRepository<Product>
+    public class ProductRepository : IProductRepository
     {
         private IProductContext _productContext;
 
@@ -34,7 +34,15 @@ namespace ConsoleShop.Data.Repositories
             return _productContext.GetById(id);
         }
 
-        public 
+        public IReadOnlyCollection<Product> GetAllByCategoryId(int id)
+        {
+            return _productContext.GetByCategoryId(id);
+        }
+
+        public IReadOnlyCollection<Product> GetAllByName(string searchParameter, string searchQuery)
+        {
+            return _productContext.GetAllByName(searchParameter, searchQuery);
+        }
 
         public void Save(Product product)
         {

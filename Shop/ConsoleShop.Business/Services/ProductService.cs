@@ -9,22 +9,23 @@ using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
 using ConsoleShop.Shared.Entities;
 using ConsoleShop.Data.Repositories.Interfaces;
 using ConsoleShop.Data.Repositories;
+using ConsoleShop.Data.DataContext.Realization.MsSql;
 using ConsoleShop.Shared.Helpers;
 
 namespace ConsoleShop.Business.Services
 {
     public class ProductService
     {
-        private IRepository<Product> _productRepository = new ProductRepository();
+        private IProductRepository _productRepository = new ProductRepository(new ProductContext());
 
         public IReadOnlyCollection<Product> GetSearchList(string searchParameter, string searchQuery)
         {
-            return _productRepository.GetSearchListFromDb(searchParameter, searchQuery);
+            return _productRepository.GetAllByName(searchParameter, searchQuery);
         }
 
         public IReadOnlyCollection<Product> GetProductsByCategoryId(int categoryId)
         {
-            return _productRepository.GetProductsByCategoryIdFromDb(categoryId);
+            return _productRepository.GetAllByCategoryId(categoryId);
         }
 
     }

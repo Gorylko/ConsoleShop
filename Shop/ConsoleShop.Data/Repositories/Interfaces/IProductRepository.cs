@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleShop.Shared.Entities;
 using System.Threading.Tasks;
+using ConsoleShop.Shared.Entities;
 
-namespace ConsoleShop.Data.DataContext.Interfaces
+namespace ConsoleShop.Data.Repositories.Interfaces
 {
-    public interface IProductContext : IDataContext<Product>
+    public interface IProductRepository : IRepository<Product>
     {
-        IReadOnlyCollection<Product> GetByCategoryId(int id);
+        IReadOnlyCollection<Product> GetAllByCategoryId(int categoryId);
 
         IReadOnlyCollection<Product> GetAllByName(string searchParameter, string searchQuery);
     }

@@ -14,9 +14,11 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
     public class ProductContext : IProductContext
     {
-        UserContext _userdata = new UserContext();
+        UserContext _userContext = new UserContext();
+        CategoryContext _categoryContext = new CategoryContext();
+        StateContext _stateContext = new StateContext();
 
-        public List<Product> GetSearchListFromDb(string searchParameter, string searchQuery)
+        public IReadOnlyCollection<Product> GetAllByName(string searchParameter, string searchQuery)
         {
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
             {
@@ -45,7 +47,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
             }
         }
 
-        public IReadOnlyCollection<Product> GetProductsByCategoryId(int categoryId)
+        public IReadOnlyCollection<Product> GetByCategoryId(int categoryId)
         {
             List<Product> products = new List<Product>();
             using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
@@ -91,7 +93,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 CreationDate = (DateTime)reader["CreationDate"],
                 LastModifiedDate = (DateTime)reader["LastModifiedDate"],
                 Category = (string)reader["Category"],
-                Author = _userdata.GetUser(reader),
+                Author = _userContext.GetUser(reader),
                 LocationOfProduct = (string)reader["Location"],
                 State = (string)reader["State"]
             };
@@ -143,6 +145,15 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 connection.Open();
                 var command = new SqlCommand($"DELETE [Product] WHERE [Id] = {id}", connection);
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public void Save(Product product)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand($"INSERT INTO [dbo].[Product]([CategoryId],[LocationId],[StateId],[UserId],[ProductName],[Description],[Price],[CreationDate],[LastModifiedDate]) VALUES({_categoryContext.GetIdByName(product.Category)}, {_stateContext.GetIdByName(product.State)}, 1, 1, 'СЯЛЕДКА', 'пожилая сельдь, с озер украины прямо к вам на стол', 123, 2019 - 02 - 04, 2019 - 02 - 04)");
             }
         }
 

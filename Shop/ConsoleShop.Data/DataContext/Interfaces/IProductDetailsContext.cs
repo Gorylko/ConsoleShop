@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleShop.Data.DataContext.Interfaces
 {
-    public interface ICategoryContext : IDataContext<string>
+    public interface IProductDetailsContext
     {
         int GetIdByName(string name);
     }

@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleShop.Data.Data;
+using ConsoleShop.Data.Repositories.Interfaces;
+using ConsoleShop.Data.Repositories;
+using ConsoleShop.Data.DataContext.Realization.MsSql;
 
 namespace ConsoleShop.Business.Services
 {
     public class CategoryService
     {
-        private CategoryData _categoryData = new CategoryData();
+        private CategoryRepository _categoryRepository = new CategoryRepository(new CategoryContext());
         
         public string GetCategoryString()
         {
-            return _categoryData.GetAllCategoriesString() + "Чтобы вернуться назад - пиши /r"; 
+            return _categoryRepository.GetAllCategoriesString() + "Чтобы вернуться назад - пиши /r"; 
         }
     }
 }

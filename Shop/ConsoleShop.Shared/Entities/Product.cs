@@ -54,6 +54,6 @@ namespace ConsoleShop.Shared.Entities
             return returnString.ToString();
         }
 
-
+        
     }
 }

@@ -81,5 +81,17 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 command.ExecuteNonQuery();
             }
         }
+
+        public int GetIdByName(string name)
+        {
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            {
+                connection.Open();
+                var command = new SqlCommand($"SELECT * FROM [Category] WHERE [Name] = '{name}'", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Read();
+                return (int)reader["Name"];
+            }
+        }
     }
 }
