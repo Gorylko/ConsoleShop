@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
-using System.Threading.Tasks;
+﻿using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 
 namespace ConsoleShop.Data.Constants
 {

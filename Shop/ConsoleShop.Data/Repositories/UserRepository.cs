@@ -1,15 +1,7 @@
-﻿using System;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using ConsoleShop.Shared.Entities;
-using System.Data.SqlClient;
-using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
-using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
 using ConsoleShop.Data.DataContext.Interfaces;
 using ConsoleShop.Data.Repositories.Interfaces;
-using ConsoleShop.Shared.Helpers;
-using ConsoleShop.Shared.Entities.Enums;
 
 namespace ConsoleShop.Data.Repositories
 {

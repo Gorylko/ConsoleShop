@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ConsoleShop.Shared.Entities;
 using System.Data.SqlClient;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;

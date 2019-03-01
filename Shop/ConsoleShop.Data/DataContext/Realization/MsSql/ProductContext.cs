@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using ConsoleShop.Shared.Entities;
 using System.Data.SqlClient;
 using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
 using ConsoleShop.Data.DataContext.Interfaces;
-using ConsoleShop.Shared.Helpers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
@@ -148,9 +144,9 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
             }
         }
 
-        public void Save(Product product)
+        public void Save(Product product) //пока не пашет, т.к. нужны методы для получения айдих по именам, ибо в бд хранятся онли айдишники полей товара, а не сами поля
         {
-            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString))
+            using (var connection = new SqlConnection(SqlConst.ConnectionToConsoleShopString)) 
             {
                 connection.Open();
                 var command = new SqlCommand($"INSERT INTO [dbo].[Product]([CategoryId],[LocationId],[StateId],[UserId],[ProductName],[Description],[Price],[CreationDate],[LastModifiedDate]) VALUES({_categoryContext.GetIdByName(product.Category)}, {_stateContext.GetIdByName(product.State)}, 1, 1, 'СЯЛЕДКА', 'пожилая сельдь, с озер украины прямо к вам на стол', 123, 2019 - 02 - 04, 2019 - 02 - 04)");

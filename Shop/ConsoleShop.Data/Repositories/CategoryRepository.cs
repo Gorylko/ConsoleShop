@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ConsoleShop.Data.Repositories.Interfaces;
-using System.Data.SqlClient;
-using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ConsoleShop.Data.DataContext.Interfaces;
 
 namespace ConsoleShop.Data.Repositories

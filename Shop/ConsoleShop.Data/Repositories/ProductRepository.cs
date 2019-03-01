@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ConsoleShop.Shared.Entities;
-using ConsoleShop.Data.DataContext.Realization.MsSql;
 using ConsoleShop.Data.DataContext.Interfaces;
 using ConsoleShop.Data.Repositories.Interfaces;
 

@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using ConsoleShop.Shared.Entities;
-using System.Data.SqlClient;
-using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
+﻿using System.Data.SqlClient;
 using SqlConst = ConsoleShop.Data.Constants.SqlQueryConstants;
-using ConsoleShop.Data.DataContext.Interfaces;
-using ConsoleShop.Shared.Helpers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleShop.Data.DataContext.Realization.MsSql
 {
