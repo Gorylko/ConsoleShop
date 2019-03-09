@@ -19,3 +19,17 @@ C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\Consol
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Business.pdb
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Shared.pdb
 C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop\bin\Debug\ConsoleShop.Data.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\obj\Debug\ConsoleShop.csprojAssemblyReference.cache
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\obj\Debug\ConsoleShop.csproj.CoreCompileInputs.cache
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\obj\Debug\ConsoleShop.exe
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\obj\Debug\ConsoleShop.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\ConsoleShop.exe.config
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\ConsoleShop.exe
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\ConsoleShop.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\Shop.Business.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\Shop.Shared.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\Shop.Data.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\Shop.Business.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\Shop.Shared.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\bin\Debug\Shop.Data.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\ConsoleShop\obj\Debug\ConsoleShop.csproj.CopyComplete

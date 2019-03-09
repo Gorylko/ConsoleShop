@@ -1,0 +1,6 @@
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\Shop.Shared\bin\Debug\Shop.Shared.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\Shop.Shared\bin\Debug\Shop.Shared.pdb
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\Shop.Shared\obj\Debug\Shop.Shared.csprojAssemblyReference.cache
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\Shop.Shared\obj\Debug\Shop.Shared.csproj.CoreCompileInputs.cache
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\Shop.Shared\obj\Debug\Shop.Shared.dll
+C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop — копия\Shop\Shop.Shared\obj\Debug\Shop.Shared.pdb

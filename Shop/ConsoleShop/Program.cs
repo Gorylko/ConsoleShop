@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleShop.MainForShop;
-using ConsoleShop.Shared.Constants;
+using Shop.MainForShop;
+using Shop.Shared.Constants;
 
-namespace ConsoleShop
+namespace Shop
 {
     class Program
     {
         static void Main()
         {
             Console.ForegroundColor = ColorConstants.DefaultColor;
-            var aglyExspress = new Shop();
+            var aglyExspress = new ConsoleShop();
             aglyExspress.OpenFirstMenu();
         }
     }

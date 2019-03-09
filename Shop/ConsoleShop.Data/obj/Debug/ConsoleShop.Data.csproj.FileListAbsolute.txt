@@ -1,9 +1,0 @@
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\obj\Debug\ConsoleShop.Data.csprojAssemblyReference.cache
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\obj\Debug\ConsoleShop.Data.csproj.CoreCompileInputs.cache
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\bin\Debug\ConsoleShop.Data.dll
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\bin\Debug\ConsoleShop.Data.pdb
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\bin\Debug\ConsoleShop.Shared.dll
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\bin\Debug\ConsoleShop.Shared.pdb
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\obj\Debug\ConsoleShop.Data.csproj.CopyComplete
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\obj\Debug\ConsoleShop.Data.dll
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Data\obj\Debug\ConsoleShop.Data.pdb

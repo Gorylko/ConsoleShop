@@ -1,6 +1,0 @@
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Shared\obj\Debug\ConsoleShop.Shared.csprojAssemblyReference.cache
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Shared\obj\Debug\ConsoleShop.Shared.csproj.CoreCompileInputs.cache
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Shared\bin\Debug\ConsoleShop.Shared.dll
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Shared\bin\Debug\ConsoleShop.Shared.pdb
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Shared\obj\Debug\ConsoleShop.Shared.dll
-C:\Users\shamy\YandexDisk\ПРОГРОМИРУЕМ, ЗНЧТ\ГирьИл\ConsoleShop\Shop\ConsoleShop.Shared\obj\Debug\ConsoleShop.Shared.pdb

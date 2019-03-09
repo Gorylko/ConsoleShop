@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConsoleShop.Shared.Entities;
-using ConsoleShop.Shared.Entities.Enums;
-using ConsoleShop.Business.Services;
-using Typography = ConsoleShop.Shared.Constants.TypographyConstants;
+using Shop.Shared.Entities;
+using Shop.Shared.Entities.Enums;
+using Shop.Business.Services;
+using Typography = Shop.Shared.Constants.TypographyConstants;
 
-namespace ConsoleShop.MainForShop
+namespace Shop.MainForShop
 {
-    public class Shop
+    public class ConsoleShop
     {
         #region Shop
         private List<Product> Catalog { get; set; }
@@ -18,7 +18,7 @@ namespace ConsoleShop.MainForShop
         private CategoryService _categoryService;
         private UserService _userService;
 
-        public Shop() 
+        public ConsoleShop() 
         {
             _productService = new ProductService();
             _userService = new UserService();
