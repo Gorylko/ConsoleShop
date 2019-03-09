@@ -19,7 +19,7 @@ namespace ConsoleShop.Data.DataContext.Realization.MsSql
                 Login = (string)reader["Login"],
                 Email = (string)reader["Email"],
                 PhoneNumber = (string)reader["PhoneNumber"],
-                Role = RoleHelper.ConvertToRoleType((string)reader["Role"])
+                Role = RoleHelper.ConvertToRoleType((int)reader["RoleId"])
             };
         }
 

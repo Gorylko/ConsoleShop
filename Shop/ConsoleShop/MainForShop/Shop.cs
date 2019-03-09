@@ -14,15 +14,15 @@ namespace ConsoleShop.MainForShop
         #region Shop
         private List<Product> Catalog { get; set; }
         public User MainUser { get; set; }
-        private ProductService _dataTool;
-        private CategoryService _categoryTool;
-        private UserService _userdata;
+        private ProductService _productService;
+        private CategoryService _categoryService;
+        private UserService _userService;
 
         public Shop() 
         {
-            _dataTool = new ProductService();
-            _userdata = new UserService();
-            _categoryTool = new CategoryService();
+            _productService = new ProductService();
+            _userService = new UserService();
+            _categoryService = new CategoryService();
         }
 
         public void OpenMainMenu()
@@ -108,7 +108,7 @@ namespace ConsoleShop.MainForShop
             {
                 Console.Clear();
                 Console.WriteLine("Выберите категорию : ");
-                Console.WriteLine(_categoryTool.GetCategoryString());
+                Console.WriteLine(_categoryService.GetCategoryString());
                 string key = ReadCurrentLine();
 
                 if(key == "/r")
@@ -126,7 +126,7 @@ namespace ConsoleShop.MainForShop
                 return;
             }
 
-            IReadOnlyCollection<Product> productsInCategory = _dataTool.GetProductsByCategoryId(int.Parse(key));
+            IReadOnlyCollection<Product> productsInCategory = _productService.GetProductsByCategoryId(int.Parse(key));
             Console.Clear();
             foreach (Product product in productsInCategory)
             {
@@ -143,7 +143,7 @@ namespace ConsoleShop.MainForShop
                 switch (ReadCurrentLine())
                 {
                     case "1":
-                        OpenSearchMenu("ProductName");
+                        OpenSearchMenu("Name");
                         break;
                     case "2":
                         OpenSearchMenu("Description");
@@ -168,7 +168,7 @@ namespace ConsoleShop.MainForShop
         {
             Console.Clear();
             Console.WriteLine("Введите свой запрос :");
-            IReadOnlyCollection<Product> products = _dataTool.GetSearchList(searchParameter, ReadCurrentLine());
+            IReadOnlyCollection<Product> products = _productService.GetSearchList(searchParameter, ReadCurrentLine());
             foreach (Product product in products)
             {
                 Console.WriteLine(product.GetInfoAboutProduct());
@@ -238,7 +238,7 @@ namespace ConsoleShop.MainForShop
                             Console.WriteLine("Введите ваш телефон");
                             string phonenumber = Console.ReadLine();
 
-                            MainUser = _userdata.GetRegistratedUser(login, password, email, phonenumber);
+                            MainUser = _userService.GetRegistratedUser(login, password, email, phonenumber);
                             Console.WriteLine("Регистрация завершена успешно!");
                             Console.ReadKey();
                         }
@@ -264,7 +264,7 @@ namespace ConsoleShop.MainForShop
                     string login = Console.ReadLine();
                     Console.WriteLine("Введите пароль : ");
                     string password = Console.ReadLine();
-                    MainUser = _userdata.GetAuthorizedUser(login, password);
+                    MainUser = _userService.GetAuthorizedUser(login, password);
                     Console.WriteLine("Авторизация завершена успешно!");
                     Console.ReadKey();
                 }
@@ -281,7 +281,7 @@ namespace ConsoleShop.MainForShop
         }
         #endregion
 
-        private string ReadCurrentLine() //повтыкать
+        private string ReadCurrentLine() //повтыкать 
         {
             return Console.ReadLine().Replace(" ", string.Empty);
         }
