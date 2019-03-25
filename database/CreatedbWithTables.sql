@@ -61,3 +61,18 @@ CREATE TABLE [dbo].[Product]
 	FOREIGN KEY([UserId]) REFERENCES [dbo].[User]([Id])
 );
 GO
+CREATE TABLE [dbo].[Purchase]
+(
+	[Id]INT IDENTITY(1,1) NOT NULL,
+	[ProductId]INT NOT NULL,
+	[SellerId]INT NOT NULL,
+	[CustomerId]INT NOT NULL,
+	[Address]NVARCHAR(100)NOT NULL,
+	[Date]DATETIME NOT NULL,
+	PRIMARY KEY CLUSTERED ([Id]ASC),
+	FOREIGN KEY([ProductId])REFERENCES [dbo].[Product](Id),
+	FOREIGN KEY([SellerId])REFERENCES [dbo].[User](Id),
+	FOREIGN KEY([CustomerId])REFERENCES [dbo].[User](Id),
+
+);
+GO
